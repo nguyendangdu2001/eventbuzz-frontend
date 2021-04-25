@@ -24,6 +24,7 @@ export default defineConfig({
       "@action": resolve(__dirname, "./src/redux/action"),
       "@config": resolve(__dirname, "./src/config"),
       "@helper": resolve(__dirname, "./src/helper"),
+      "@icon": resolve(__dirname, "./src/common/components/icons"),
     },
   },
 });

@@ -1,9 +1,13 @@
 import { lazy } from "react";
 
 const Home = lazy(() => import("@pages/Home"));
-
+const Detail = lazy(() => import("@pages/Detail"));
+const Search = lazy(() => import("@pages/Search"));
 const Routes = [
   { path: "/", exact: true, component: Home },
+  { path: "/detail", exact: true, component: Detail },
+  { path: "/search", exact: true, component: Search },
+
   // { path: "/login", exact: true, component: Login },
   // { path: "/signup", exact: true, component: SignUp },
   // {
