@@ -5,10 +5,10 @@ const FacebookIcon = () => {
     <svg
       version="1.1"
       xmlns="http://www.w3.org/2000/svg"
-      xmlns:xlink="http://www.w3.org/1999/xlink"
+      xmlnsXlink="http://www.w3.org/1999/xlink"
       viewBox="0 0 155.139 155.139"
       fill="currentColor"
-      xml:space="preserve"
+      xmlSpace="preserve"
     >
       <g>
         <path

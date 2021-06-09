@@ -1,20 +1,35 @@
 import EventItem from "@components/EventItem/EventItem";
-import React from "react";
+import { fakeData } from "@data/fakeData";
+import { AnimateSharedLayout, m } from "framer-motion";
+import React, { useEffect, useState } from "react";
 
 const Search = () => {
+  const [key, setKey] = useState("");
+  const [filterArray, setFilterArray] = useState(fakeData);
+  useEffect(() => {
+    const filterArray2 = fakeData.filter((v) => {
+      const regex = new RegExp(`${key}`, "g");
+      return v?.name.match(regex);
+    });
+    console.log(filterArray2);
+    setFilterArray(filterArray2);
+    return () => {};
+  }, [key]);
   return (
-    <div className="container mx-auto space-y-14">
+    <div className="container pt-8 mx-auto space-y-14">
       <form className="space-y-14">
-        <div className="flex space-x-4">
+        <div className="flex flex-col space-x-4 md:flex-row">
           <input
-            className="form-border-b font-bold text-4xl placeholder-gray-400 bg-transparent border-b-2"
+            className="w-auto text-4xl font-bold placeholder-gray-400 bg-transparent border-b-2 border-none form-border-b dark:bg-transparent"
             type="text"
             name=""
+            value={key}
             placeholder="Search anything"
+            onChange={(e) => setKey(e.target.value)}
           />
           <button
             type="submit"
-            className="px-8 rounded-xl bg-blue-500 text-white shadow-xl font-bold text-base"
+            className="px-8 py-4 text-base font-bold text-white bg-blue-500 shadow-xl rounded-xl w-fit"
           >
             Search
           </button>
@@ -23,7 +38,7 @@ const Search = () => {
           <select
             name=""
             placeholder="Weekdays"
-            className="rounded-md bg-gray-200 dark:bg-gray-900 border-none pr-13 pl-7 py-3 font-semibold"
+            className="py-3 font-semibold bg-gray-200 border-none rounded-md dark:bg-gray-900 pr-13 pl-7"
           >
             <option value="" disabled selected>
               Weekdays
@@ -33,7 +48,7 @@ const Search = () => {
           <select
             name=""
             placeholder="Event Type"
-            className="rounded-md bg-gray-200 dark:bg-gray-900 border-none pr-13 pl-7 py-3 font-semibold"
+            className="py-3 font-semibold bg-gray-200 border-none rounded-md dark:bg-gray-900 pr-13 pl-7"
           >
             <option value="" disabled selected>
               Event Type
@@ -42,7 +57,7 @@ const Search = () => {
           <select
             name=""
             placeholder="Event Type"
-            className="rounded-md bg-gray-200 dark:bg-gray-900 border-none pr-13 pl-7 py-3 font-semibold"
+            className="py-3 font-semibold bg-gray-200 border-none rounded-md dark:bg-gray-900 pr-13 pl-7"
           >
             <option value="" disabled selected>
               Any Category
@@ -50,13 +65,17 @@ const Search = () => {
           </select>
         </div>
       </form>
-      <div className="event-list grid grid-cols-3 grid-flow-row gap-x-16 gap-y-10">
-        {[...Array(9)].map((_, i) => (
-          <EventItem key={i} />
-        ))}
+      <div className="grid grid-flow-row grid-cols-1 event-list md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 lg:gap-x-16 lg:gap-y-10">
+        <AnimateSharedLayout>
+          {filterArray.map((_, i) => (
+            <m.div layout>
+              <EventItem key={i} {..._} />
+            </m.div>
+          ))}
+        </AnimateSharedLayout>
       </div>
-      <div className="load-more flex justify-center items-center">
-        <div className="load-more__btn px-6 py-4 rounded-xl bg-gray-200 text-blue-600 font-bold text-lg">
+      <div className="flex items-center justify-center load-more">
+        <div className="px-6 py-4 text-lg font-bold text-blue-600 bg-gray-200 load-more__btn rounded-xl">
           Load More Event
         </div>
       </div>

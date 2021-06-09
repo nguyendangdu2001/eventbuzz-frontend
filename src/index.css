@@ -7,12 +7,57 @@
     width: fit-content;
   }
   .header {
-    @apply font-bold text-3xl dark:text-white;
+    @apply text-3xl font-bold dark:text-white;
   }
   .editor a {
-    @apply text-blue-600 font-semibold dark:text-blue-400;
+    @apply font-semibold text-blue-600 dark:text-blue-400;
   }
   .form-border-b {
-    @apply border-t-0 border-r-0 border-l-0;
+    @apply border-t-0 border-l-0 border-r-0;
   }
+  input {
+    @apply w-full px-6 py-4 font-medium transition-colors border-gray-300 rounded-xl dark:bg-gray-800 dark:text-gray-50;
+  }
+  .e-schedule {
+    @apply dark:bg-gray-900;
+  }
+  .e-schedule .e-schedule-toolbar .e-toolbar-items {
+    @apply dark:bg-gray-800;
+  }
+  .e-schedule .e-schedule-toolbar .e-tbar-btn {
+    @apply dark:bg-gray-700;
+  }
+  .e-toolbar .e-toolbar-items .e-toolbar-item .e-tbar-btn-text {
+    @apply dark:text-gray-50;
+  }
+  .e-schedule .e-vertical-view .e-left-indent-wrap table tbody td {
+    @apply dark:bg-gray-800;
+  }
+  .e-schedule .e-vertical-view .e-date-header-wrap table tbody td {
+    @apply dark:bg-gray-800 dark:text-gray-100 dark:border-gray-400;
+  }
+  .e-schedule .e-vertical-view .e-time-cells-wrap table td {
+    @apply dark:bg-gray-800 dark:text-gray-100 dark:border-gray-400 dark:border-b-0;
+  }
+  .e-schedule .e-vertical-view .e-time-cells-wrap .e-time-cells {
+    @apply dark:border-b;
+  }
+  .e-schedule .e-vertical-view .e-work-cells {
+    @apply dark:border-gray-400 dark:bg-gray-700 dark:hover:bg-gray-600;
+  }
+  /* .e-schedule .e-vertical-view .e-work-cells:hover {
+    @apply dark:border-gray-400 dark:bg-gray-700 hover:bg-gray-600;
+  } */
+  .e-schedule .e-vertical-view .e-work-hours {
+    @apply dark:bg-gray-800;
+  }
+  .e-schedule .e-vertical-view .e-left-indent-wrap table tbody td {
+    @apply dark:border-gray-400;
+  }
+}
+.dark .rbc-off-range {
+  color: white;
+}
+.dark .rbc-btn-group button:not(.rbc-active) {
+  color: white;
 }

@@ -8,11 +8,13 @@
     "paths": {
       "@pages/*": ["./src/pages/*"],
       "@hooks/*": ["./src/common/hooks/*"],
+      "@icon/*": ["./src/common/components/icons/*"],
       "@components/*": ["./src/common/components/*"],
       "@action/*": ["./src/redux/action/*"],
       "@config/*": ["./src/config/*"],
       "@helper/*": ["./src/helper/*"],
-      "@icon/*": ["./src/common/components/icons"]
+      "@assets/*": ["./src/assets/*"],
+      "@data/*": ["./src/data/*"]
     }
   },
   "exclude": ["node_modules"]

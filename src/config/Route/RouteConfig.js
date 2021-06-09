@@ -3,10 +3,29 @@ import { lazy } from "react";
 const Home = lazy(() => import("@pages/Home"));
 const Detail = lazy(() => import("@pages/Detail"));
 const Search = lazy(() => import("@pages/Search"));
+const Login = lazy(() => import("@pages/Login"));
+const SignUp = lazy(() => import("@pages/SignUp"));
+
+const UserHome = lazy(() => import("@pages/UserHome"));
+const UserCalendar = lazy(() => import("@pages/UserCalendar"));
+const EventMap = lazy(() => import("@pages/EventMap"));
+const UserPage = lazy(() => import("@pages/UserPage"));
+const Payment = lazy(() => import("@pages/Payment"));
+const UserEvent = lazy(() => import("@pages/UserEvent"));
+
 const Routes = [
   { path: "/", exact: true, component: Home },
-  { path: "/detail", exact: true, component: Detail },
+  { path: "/detail/:id", exact: true, component: Detail },
   { path: "/search", exact: true, component: Search },
+  { path: "/login", exact: true, component: Login },
+  { path: "/signup", exact: true, component: SignUp },
+
+  { path: "/user-home", exact: true, component: UserHome },
+  { path: "/user-calendar", exact: true, component: UserCalendar },
+  { path: "/event-map", exact: true, component: EventMap },
+  { path: "/user-page", exact: true, component: UserPage },
+  { path: "/payment", exact: true, component: Payment },
+  { path: "/user-event", exact: true, component: UserEvent },
 
   // { path: "/login", exact: true, component: Login },
   // { path: "/signup", exact: true, component: SignUp },

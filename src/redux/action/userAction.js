@@ -17,6 +17,13 @@ export const loginAction = (loginData, cb) => async (dispatch) => {
     // console.log(error);
   }
 };
+export const dummyLogin = (cb) => (dispatch) => {
+  dispatch({
+    type: userConstants.USER_LOGIN_SUCCESS,
+    payload: { name: "luffy" },
+  });
+  cb?.();
+};
 
 export const signupAction = (signUpData, cb) => async (dispatch) => {
   dispatch({ type: userConstants.USER_SIGNUP_REQUEST });

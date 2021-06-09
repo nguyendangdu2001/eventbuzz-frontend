@@ -1,0 +1,12 @@
+.e-appointment {
+  border-radius: 10px !important;
+}
+.e-appointment-details {
+  height: 100%;
+  padding: 0 !important;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.e-appointment-details > div {
+  height: 100%;
+}
