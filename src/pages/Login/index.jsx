@@ -2,6 +2,8 @@ import { dummyLogin } from "@action/userAction";
 import FacebookIcon from "@icon/FacebookIcon";
 import GooglePlusIcon from "@icon/GooglePlusIcon";
 import React from "react";
+import { useGoogleLogin as useGoogleLoginApi } from "react-google-login";
+import useGoogleLogin from "@hooks/api/mutation/useGoogleLogin";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
@@ -14,6 +16,18 @@ const Login = () => {
   const onSubmit = () => {
     dispatch(dummyLogin(() => history.replace("/user-home")));
   };
+  const [loginWithGoogle, { loading }] = useGoogleLogin();
+  const responseGoogle = (res) => {
+    console.log(res);
+    loginWithGoogle({ variables: { id_token: res?.tokenId } });
+  };
+  const { signIn } = useGoogleLoginApi({
+    clientId:
+      "273628985067-j8hb4td82dvf1cj2sjc0hsjijlp92kla.apps.googleusercontent.com",
+    cookiePolicy: "single_host_origin",
+    onSuccess: responseGoogle,
+    onFailure: (err) => console.log(err),
+  });
   return (
     <div className="grid w-full grid-cols-12">
       <div className="flex flex-col h-full col-span-12 lg:col-span-7 p-14 lg:px-56 form">
@@ -32,9 +46,12 @@ const Login = () => {
               <div className="p-4 text-white bg-blue-500 rounded-full h-14 w-14">
                 <FacebookIcon />
               </div>
-              <div className="p-4 text-white bg-red-500 rounded-full h-14 w-14">
+              <button
+                className="p-4 text-base text-white bg-red-500 rounded-full h-14 w-14"
+                onClick={signIn}
+              >
                 <GooglePlusIcon />
-              </div>
+              </button>
             </div>
             <div className="font-medium text-center text-gray-500">
               Or use your email account:

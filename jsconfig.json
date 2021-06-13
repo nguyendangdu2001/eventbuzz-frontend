@@ -14,7 +14,8 @@
       "@config/*": ["./src/config/*"],
       "@helper/*": ["./src/helper/*"],
       "@assets/*": ["./src/assets/*"],
-      "@data/*": ["./src/data/*"]
+      "@data/*": ["./src/data/*"],
+      "@redux/*": ["./src/redux/*"]
     }
   },
   "exclude": ["node_modules"]

@@ -1,10 +1,9 @@
-import { defineConfig } from "vite";
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import { resolve } from "path";
 import eslint from "@rbnlffl/rollup-plugin-eslint";
 // import eslintPlugin from "vite-plugin-eslint";
 // https://vitejs.dev/config/
-export default defineConfig({
+const config = ({ command }) => ({
   plugins: [
     reactRefresh(),
     eslint({
@@ -13,6 +12,7 @@ export default defineConfig({
       throwOnError: true,
     }),
   ],
+  base: command === "serve" ? "" : "/bwd2021-frontend/",
   define: {
     global: "window",
   },
@@ -26,8 +26,10 @@ export default defineConfig({
       "@helper": resolve(__dirname, "./src/helper"),
       "@assets": resolve(__dirname, "./src/assets"),
       "@data": resolve(__dirname, "./src/data"),
+      "@redux": resolve(__dirname, "./src/redux"),
 
       "@icon": resolve(__dirname, "./src/common/components/icons"),
     },
   },
 });
+export default config;

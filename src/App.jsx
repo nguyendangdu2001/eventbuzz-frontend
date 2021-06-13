@@ -25,7 +25,7 @@ function App() {
           <GetRoutes />
           <Footer />
           <ScrollToTop />
-          <ReactQueryDevtools initialIsOpen />
+          {/* <ReactQueryDevtools initialIsOpen /> */}
         </LazyMotion>
       </div>
     </div>

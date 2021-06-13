@@ -14,12 +14,12 @@ const initialState = userInfo
     }
   : {};
 
-export default createStore(
-  rootReducer,
-  initialState,
-  compose(
-    applyMiddleware(thunk),
-    //@ts-ignore
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-  )
-);
+const middleware = import.meta.env.PROD
+  ? compose(applyMiddleware(thunk))
+  : compose(
+      applyMiddleware(thunk),
+      //@ts-ignore
+      window.__REDUX_DEVTOOLS_EXTENSION__ &&
+        window.__REDUX_DEVTOOLS_EXTENSION__()
+    );
+export default createStore(rootReducer, initialState, middleware);

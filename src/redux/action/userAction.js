@@ -24,6 +24,13 @@ export const dummyLogin = (cb) => (dispatch) => {
   });
   cb?.();
 };
+export const loginSuccess = (userData, cb) => async (dispatch) => {
+  dispatch({
+    type: userConstants.USER_LOGIN_SUCCESS,
+    payload: { ...userData },
+  });
+  Cookies.set("userInfo", JSON.stringify(userData));
+};
 
 export const signupAction = (signUpData, cb) => async (dispatch) => {
   dispatch({ type: userConstants.USER_SIGNUP_REQUEST });

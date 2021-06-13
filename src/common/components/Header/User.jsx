@@ -1,6 +1,7 @@
 import { logout } from "@action/userAction";
 import { Popover, Transition } from "@headlessui/react";
 import { BellIcon } from "@heroicons/react/outline";
+import useUserProfile from "@hooks/api/queries/useUserProfile";
 import React from "react";
 import { Fragment } from "react";
 import DarkModeToggle from "react-dark-mode-toggle";
@@ -12,6 +13,9 @@ const User = () => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.darkMode);
   const history = useHistory();
+  const { data } = useUserProfile();
+  const { user } = data || {};
+  console.log(user);
   return (
     <div className="flex items-center space-x-6 font-bold">
       <div className="p-3 rounded-lg hover:bg-gray-200 dark:bg-transparent dark:hover:bg-gray-600 dark:text-gray-50">
@@ -19,12 +23,10 @@ const User = () => {
       </div>
       <Popover as="div" className="relative inline-block text-left">
         <Popover.Button className="flex items-center px-2 py-1 space-x-2 rounded-lg cursor-pointer hover:bg-gray-200 dark:bg-transparent dark:hover:bg-gray-600">
-          <img
-            src="https://dummyimage.com/50x50.png"
-            alt=""
-            className="rounded-full w-11 h-11"
-          />
-          <div className="text-lg font-bold dark:text-gray-50">Name</div>
+          <img src={user?.avatar} alt="" className="rounded-full w-11 h-11" />
+          <div className="text-lg font-bold dark:text-gray-50">
+            {user?.lastName}
+          </div>
         </Popover.Button>
         <Transition
           as={Fragment}
@@ -42,13 +44,13 @@ const User = () => {
                 className="flex items-center p-2 space-x-2 transition-colors rounded-md hover:bg-gray-100 dark:hover:bg-gray-500"
               >
                 <img
-                  src="https://dummyimage.com/50x50.png"
+                  src={user?.avatar}
                   alt=""
                   className="object-cover w-16 h-16 rounded-full"
                 />
                 <div className="">
                   <div className="text-base font-bold dark:text-gray-50">
-                    Name
+                    {user?.lastName}
                   </div>
                   <div className="text-sm font-normal text-gray-500 dark:text-gray-200">
                     Go to your user page

@@ -6,21 +6,42 @@ import { theme } from "@config/theme";
 import store from "./redux/store/store";
 import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, HashRouter } from "react-router-dom";
 import { configAxios } from "@config/axios";
-import { QueryClientProvider } from "react-query";
-import { configReactQuery } from "@config/react-query";
+import "./config/timeago";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
+import { relayStylePagination } from "@apollo/client/utilities";
 // console.log(store.);
 configAxios(store);
-const qc = configReactQuery({ store });
+
+const client = new ApolloClient({
+  uri: "http://localhost:5000/graphql",
+  cache: new InMemoryCache({
+    typePolicies: {
+      Query: {
+        fields: {
+          posts: relayStylePagination("type"),
+          userPosts: relayStylePagination("type"),
+        },
+      },
+      Post: {
+        fields: {
+          comments: relayStylePagination(),
+        },
+      },
+    },
+  }),
+  connectToDevTools: true,
+  credentials: "include",
+});
 ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <BrowserRouter basename={import.meta.env.PUBLIC_URL}>
-          <QueryClientProvider client={qc}>
+        <BrowserRouter basename={import.meta.env.BASE_URL}>
+          <ApolloProvider client={client}>
             <App />
-          </QueryClientProvider>
+          </ApolloProvider>
         </BrowserRouter>
       </Provider>
     </ThemeProvider>

@@ -1,9 +1,24 @@
+import PostItem from "@components/PostItem";
+import useUserPosts from "@hooks/api/queries/useUserPosts";
 import React from "react";
+import { useSelector } from "react-redux";
 import EventItem from "../EventItem";
 
 const PostTab = () => {
+  const id = useSelector((state) => state.userStatus?.userInfo?.id);
+  const { data } = useUserPosts(id);
+  console.log(data);
+  const postsEdges = data?.userPosts?.edges;
   return (
     <div className="space-y-2">
+      {postsEdges?.map((egde, i) => (
+        <div className="flex" key={egde?.node?.id}>
+          <div className="w-1/4"></div>
+          <div className="w-3/4 px-3">
+            <PostItem {...egde.node} key={egde.node?.id} />
+          </div>
+        </div>
+      ))}
       <div className="flex">
         <div className="w-1/4">
           <EventItem />
