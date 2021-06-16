@@ -1,10 +1,13 @@
 import { ChatIcon, HeartIcon, ShareIcon } from "@heroicons/react/outline";
 import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
-import useLikePost from "@hooks/api/mutation/useLikePost";
+import useLikeComment from "@hooks/api/mutation/useLikePost";
 import useUnlikePost from "@hooks/api/mutation/useUnlikePost";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CommentForm from "@components/CommentForm";
 import TimeAgo from "timeago-react";
+import useComments from "@hooks/api/queries/useComments";
+import useFetchMoreCommentPost from "@hooks/api/queries/useFetchMoreCommentPost";
+import CommentSection from "@components/CommentSection";
 const PostItem = ({
   id,
   name = "Name of user",
@@ -17,14 +20,17 @@ const PostItem = ({
   likeCount,
   createdAt = Date.now(),
   isUserLiked,
+  comments,
 }) => {
-  const [likePost] = useLikePost();
+  const [likePost] = useLikeComment();
   const [unlikePost] = useUnlikePost();
 
+  const { fetchMore } = useFetchMoreCommentPost(id);
+  const endCursor = comments?.pageInfo?.endCursor;
   return (
     <div className="space-y-2 bg-white rounded-lg shadow dark:bg-gray-900">
-      <div className="p-2 space-y-2">
-        <div className="flex space-x-1">
+      <div className="p-3 space-y-2">
+        <div className="flex space-x-2">
           <img
             src={author?.avatar || "https://dummyimage.com/50x50.png"}
             alt=""
@@ -83,18 +89,19 @@ const PostItem = ({
           )}{" "}
           <span className="text-base">Like</span>
         </button>
-        <div className="flex items-center justify-center flex-1 p-2 space-x-2 text-center rounded-lg cursor-pointer dark:text-gray-50 hover:bg-gray-200 dark:hover:bg-gray-700">
+        <button
+          onClick={() => fetchMore({ variables: { after: endCursor } })}
+          className="flex items-center justify-center flex-1 p-2 space-x-2 text-base text-center rounded-lg cursor-pointer dark:text-gray-50 hover:bg-gray-200 dark:hover:bg-gray-700"
+        >
           <ChatIcon className="w-6 h-6" />
           <span>Comment</span>
-        </div>
+        </button>
         <div className="flex items-center justify-center flex-1 p-2 space-x-2 text-center rounded-lg cursor-pointer dark:text-gray-50 hover:bg-gray-200 dark:hover:bg-gray-700">
           <ShareIcon className="w-6 h-6" />
           <span>Share</span>
         </div>
       </div>
-      <div className="space-y-2">
-        <CommentForm postId={id} />
-      </div>
+      <CommentSection postId={id} />
     </div>
   );
 };

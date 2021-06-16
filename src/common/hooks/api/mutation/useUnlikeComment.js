@@ -1,20 +1,19 @@
 import { gql, useMutation } from "@apollo/client";
 
 const CREATE_POST = gql`
-  mutation LikePost($id: ID!) {
-    likePost(idPost: $id) {
-      id
-      authorId
-      likeCount
+  mutation unlikeComment($id: ID!) {
+    unlikeComment(id: $id) {
       isUserLiked
+      id
+      likeCount
     }
   }
 `;
 
-const useLikeComment = () => {
+const useUnlikeComment = () => {
   //   const dispatch = useDispatch();
   //   const history = useHistory();
   return useMutation(CREATE_POST);
 };
 
-export default useLikeComment;
+export default useUnlikeComment;

@@ -12,7 +12,13 @@ const GET_POSTS = gql`
       edges {
         cursor
         node {
-          comments(first: 3) {
+          comments(first: 1) {
+            pageInfo {
+              endCursor
+              hasNextPage
+              hasPreviousPage
+              startCursor
+            }
             edges {
               node {
                 user {
@@ -21,9 +27,14 @@ const GET_POSTS = gql`
                   lastName
                 }
                 text
-                id
               }
             }
+          }
+          author {
+            avatar
+            firstName
+            lastName
+            id
           }
           id
           likeCount

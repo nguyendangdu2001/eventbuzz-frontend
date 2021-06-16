@@ -15,7 +15,7 @@ const User = () => {
   const history = useHistory();
   const { data } = useUserProfile();
   const { user } = data || {};
-  console.log(user);
+  // console.log(user);
   return (
     <div className="flex items-center space-x-6 font-bold">
       <div className="p-3 rounded-lg hover:bg-gray-200 dark:bg-transparent dark:hover:bg-gray-600 dark:text-gray-50">

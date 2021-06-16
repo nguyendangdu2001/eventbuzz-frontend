@@ -22,6 +22,7 @@ const client = new ApolloClient({
         fields: {
           posts: relayStylePagination("type"),
           userPosts: relayStylePagination("type"),
+          commentsById: relayStylePagination(["postId", "commentId"]),
         },
       },
       Post: {
