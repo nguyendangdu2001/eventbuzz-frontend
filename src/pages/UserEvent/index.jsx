@@ -1,5 +1,6 @@
 import { DotsVerticalIcon } from "@heroicons/react/outline";
 import React from "react";
+import UserEventNew from "./UserEventNew";
 
 const UserEvent = () => {
   return (
@@ -36,12 +37,13 @@ const UserEvent = () => {
             </option>
           </select>
         </div>
-        <button className="px-6 text-base font-bold bg-blue-600 rounded-md text-gray-50">
+        {/* <button className="px-6 text-base font-bold bg-blue-600 rounded-md text-gray-50">
           Create event
-        </button>
+        </button> */}
+        <UserEventNew />
       </div>
       <div className="space-y-4 font-medium">
-        {[...Array(6)].map((_, i) => (
+        {[...Array(2)].map((_, i) => (
           <div className="flex items-center p-2 space-x-5 bg-white rounded-lg shadow dark:bg-gray-900">
             <div className="w-1/12">
               <div className="aspect-w-1 aspect-h-1">
