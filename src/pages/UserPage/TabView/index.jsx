@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import PictureTab from "../PictureTab";
-import PostTab from "../PostTab";
+import { lazy } from "react";
+const PictureTab = lazy(() => import("../PictureTab"));
+const PostTab = lazy(() => import("../PostTab"));
 
 const TabView = () => {
   const [index, setIndex] = useState(0);

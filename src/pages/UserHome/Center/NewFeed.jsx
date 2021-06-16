@@ -10,8 +10,9 @@ const NewFeed = () => {
 
   const { ref, inView } = useInView({ rootMargin: "100px", delay: 100 });
   const { data, fetchMore } = usePosts();
-  console.log(data);
+
   const postsEdges = data?.posts?.edges;
+
   useEffect(() => {
     if (inView === true) setNumOfPost((prev) => prev + 6);
     return () => {};
@@ -38,12 +39,12 @@ const NewFeed = () => {
           <EventHomeItem
             img={`https://picsum.photos/500/500.jpg?random=${3 * i}`}
           />
-          <PostItem
+          {/* <PostItem
             img={[
               `https://picsum.photos/500/500.jpg?random=${3 * i + 1}`,
               `https://picsum.photos/500/500.jpg?random=${3 * i + 2}`,
             ]}
-          />
+          /> */}
         </Fragment>
       ))}
       <div ref={ref}></div>

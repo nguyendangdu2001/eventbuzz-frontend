@@ -7,7 +7,7 @@ import EventItem from "../EventItem";
 const PostTab = () => {
   const id = useSelector((state) => state.userStatus?.userInfo?.id);
   const { data } = useUserPosts(id);
-  console.log(data);
+
   const postsEdges = data?.userPosts?.edges;
   return (
     <div className="space-y-2">
