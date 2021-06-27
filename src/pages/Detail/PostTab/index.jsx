@@ -52,7 +52,7 @@ const PostTab = () => {
       {userPost?.map((post, i) => (
         <PostItem text={post?.text} name={post?.name} img={[]} />
       ))}
-      {/* {[...Array(5)].map((_, i) => (
+      {[...Array(5)].map((_, i) => (
         <Fragment key={i}>
           <PostItem
             img={[
@@ -61,7 +61,7 @@ const PostTab = () => {
             ]}
           />
         </Fragment>
-      ))} */}
+      ))}
     </div>
   );
 };

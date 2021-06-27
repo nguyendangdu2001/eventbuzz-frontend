@@ -7,6 +7,7 @@ const CREATE_POST = gql`
       id
       text
       createdAt
+      isUserLiked
       media
       likeCount
       commentCount
@@ -38,7 +39,7 @@ const useCreateComment = () => {
           commentId: createComment?.commentBelongId || undefined,
         },
       });
-      console.log(comments);
+      console.log(comments, "in");
       // console.log(
       //   {
       //     comments: {
@@ -73,6 +74,7 @@ const useCreateComment = () => {
             ],
           },
         },
+        // broadcast: false,
       });
       // console.log(
       //   cache.readQuery({

@@ -1,23 +1,27 @@
 import HeartIcon from "@components/icons/HeartIcon";
 import UploadIcon from "@components/icons/UploadIcon";
 import { LocationMarkerIcon } from "@heroicons/react/outline";
-import React from "react";
+import React, { forwardRef } from "react";
 import { Link } from "react-router-dom";
 import img2 from "./714745-beautiful-dj-music-wallpaper-2880x1800-hd.jpg";
 
-const EventItem = ({
-  id = 0,
-  name = "Dream World Wide In Jakata",
-  img = img2,
-  price = 0,
-  tag = [],
-  date = "Saturday, Sep 14, 2019 at 20:30 PM",
-  host = { name: "Someone" },
-}) => {
+const EventItem = (
+  {
+    id = 0,
+    name = "Dream World Wide In Jakata",
+    img = img2,
+    price = 0,
+    tag = [],
+    date = "Saturday, Sep 14, 2019 at 20:30 PM",
+    host = { name: "Someone" },
+  },
+  ref
+) => {
   return (
     <Link
+      ref={ref}
       to={`/detail/${id}`}
-      className="block overflow-hidden duration-200 ease-in-out rounded-lg shadow-md group event-item dark:bg-gray-900 dark:hover:bg-gray-800 transform-gpu hover:-translate-y-3 hover:shadow-xl transition-allt"
+      className="block overflow-hidden duration-200 ease-in-out rounded-lg shadow-md event-item group dark:bg-gray-900 dark:hover:bg-gray-800 transform-gpu hover:-translate-y-3 hover:shadow-xl transition-allt"
     >
       <div
         className="flex items-start justify-between p-6 bg-no-repeat bg-cover img h-52 filter dark:contrast-125"
@@ -69,4 +73,4 @@ const EventItem = ({
   );
 };
 
-export default EventItem;
+export default forwardRef(EventItem);

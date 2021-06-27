@@ -5,12 +5,15 @@ import img from "@assets/img/event3.jpg";
 
 const Payment = () => {
   return (
-    <div className="grid w-full grid-cols-12 dark:text-gray-50">
-      <div className="col-span-9 px-64 py-8">
+    <div
+      className="flex flex-col-reverse w-full grid-cols-12 lg:grid dark:text-gray-50 "
+      style={{ gridAutoFlow: "dense" }}
+    >
+      <div className="col-span-12 px-2 py-8 lg:px-64 lg:col-span-9">
         <h3 className="text-2xl font-bold">Personal Infomation</h3>
         <TabView />
       </div>
-      <div className="col-span-3 bg-gray-100 dark:bg-gray-800">
+      <div className="col-span-12 bg-gray-100 lg:col-span-3 dark:bg-gray-800">
         <div className="bg-gray-300 aspect-w-16 aspect-h-9">
           <img src={img} className="absolute w-full h-full" alt="" />
         </div>

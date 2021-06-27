@@ -12,6 +12,7 @@ const EventMap = lazy(() => import("@pages/EventMap"));
 const UserPage = lazy(() => import("@pages/UserPage"));
 const Payment = lazy(() => import("@pages/Payment"));
 const UserEvent = lazy(() => import("@pages/UserEvent"));
+const Admin = lazy(() => import("@pages/Admin"));
 
 const Routes = [
   { path: "/", exact: true, component: Home },
@@ -26,6 +27,7 @@ const Routes = [
   { path: "/user-page", exact: true, component: UserPage },
   { path: "/payment", exact: true, component: Payment },
   { path: "/user-event", exact: true, component: UserEvent },
+  { path: "/admin", exact: true, component: Admin },
 
   // { path: "/login", exact: true, component: Login },
   // { path: "/signup", exact: true, component: SignUp },

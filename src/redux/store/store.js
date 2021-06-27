@@ -3,7 +3,7 @@ import { applyMiddleware, compose, createStore } from "redux";
 import thunk from "redux-thunk";
 import Cookie from "js-cookie";
 
-const userInfo = Cookie.getJSON("userInfo") || null;
+const userInfo = Cookie.getJSON("userInfo-bwd") || null;
 
 const initialState = userInfo
   ? {

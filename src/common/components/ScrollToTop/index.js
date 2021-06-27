@@ -1,11 +1,13 @@
+import gsap from "gsap";
+import ScrollToPlugin from "gsap/ScrollToPlugin";
 import { useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
+gsap.registerPlugin(ScrollToPlugin);
 export const ScrollToTop = () => {
   const history = useHistory();
   useEffect(() => {
     const unlisten = history.listen(() => {
-      window.scrollTo({ left: 0, top: 0, behavior: "smooth" });
+      gsap.to(window, { duration: 0.7, scrollTo: 0 });
     });
     return unlisten;
   }, [history]);

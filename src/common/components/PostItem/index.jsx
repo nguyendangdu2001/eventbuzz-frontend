@@ -3,11 +3,12 @@ import { HeartIcon as SolidHeartIcon } from "@heroicons/react/solid";
 import useLikeComment from "@hooks/api/mutation/useLikePost";
 import useUnlikePost from "@hooks/api/mutation/useUnlikePost";
 import React, { useEffect, useState } from "react";
-import CommentForm from "@components/CommentForm";
 import TimeAgo from "timeago-react";
-import useComments from "@hooks/api/queries/useComments";
-import useFetchMoreCommentPost from "@hooks/api/queries/useFetchMoreCommentPost";
+// import FbImageLibrary from "react-fb-image-grid";
+
 import CommentSection from "@components/CommentSection";
+import MediaLayout from "./MediaLayout";
+import ReactPhotoGrid from "react-photo-grid";
 const PostItem = ({
   id,
   name = "Name of user",
@@ -25,8 +26,8 @@ const PostItem = ({
   const [likePost] = useLikeComment();
   const [unlikePost] = useUnlikePost();
 
-  const { fetchMore } = useFetchMoreCommentPost(id);
-  const endCursor = comments?.pageInfo?.endCursor;
+  // const { fetchMore } = useFetchMoreCommentPost(id);
+
   return (
     <div className="space-y-2 bg-white rounded-lg shadow dark:bg-gray-900">
       <div className="p-3 space-y-2">
@@ -45,14 +46,17 @@ const PostItem = ({
         </div>
         <div className="dark:text-gray-50">{content}</div>
       </div>
+      <div>
+        <MediaLayout media={media} />
+      </div>
 
-      <div className="flex w-full space-x-1">
+      {/* <div className="flex w-full space-x-1">
         {media?.map((image, i) => (
-          <div className="flex-1 overflow-hidden rounded-xl" key={i}>
+          <div className="flex-auto overflow-hidden rounded" key={i}>
             <img src={image} alt="" className="object-cover" />
           </div>
         ))}
-      </div>
+      </div> */}
       <div className="flex">
         <button
           onClick={() =>
@@ -90,7 +94,7 @@ const PostItem = ({
           <span className="text-base">Like</span>
         </button>
         <button
-          onClick={() => fetchMore({ variables: { after: endCursor } })}
+          // onClick={() => fetchMore({ variables: { after: endCursor } })}
           className="flex items-center justify-center flex-1 p-2 space-x-2 text-base text-center rounded-lg cursor-pointer dark:text-gray-50 hover:bg-gray-200 dark:hover:bg-gray-700"
         >
           <ChatIcon className="w-6 h-6" />

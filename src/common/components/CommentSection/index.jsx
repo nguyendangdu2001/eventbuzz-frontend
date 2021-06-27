@@ -1,10 +1,11 @@
 import CommentForm from "@components/CommentForm";
 import useComments from "@hooks/api/queries/useComments";
 import React from "react";
+import { memo } from "react";
 import Comment from "../Comment";
 const CommentSection = ({ postId }) => {
   const { data, fetchMore, loading } = useComments({ postId: postId });
-  //   console.log(data);
+  console.log(data);
   const commentEdges = data?.comments?.edges;
   const { hasNextPage, endCursor } = data?.comments?.pageInfo || {};
 
@@ -30,4 +31,4 @@ const CommentSection = ({ postId }) => {
   );
 };
 
-export default CommentSection;
+export default memo(CommentSection);

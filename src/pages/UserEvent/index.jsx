@@ -1,8 +1,10 @@
 import { DotsVerticalIcon } from "@heroicons/react/outline";
+import useUserOwnEvent from "@hooks/api/queries/useUserOwnEvent";
 import React from "react";
 import UserEventNew from "./UserEventNew";
 
 const UserEvent = () => {
+  const { data } = useUserOwnEvent();
   return (
     <div className="container pt-3 mx-auto space-y-8">
       <h3 className="text-5xl font-bold dark:text-gray-50">My Events</h3>
@@ -43,7 +45,7 @@ const UserEvent = () => {
         <UserEventNew />
       </div>
       <div className="space-y-4 font-medium">
-        {[...Array(2)].map((_, i) => (
+        {[...Array(9)].map((_, i) => (
           <div className="flex items-center p-2 space-x-5 bg-white rounded-lg shadow dark:bg-gray-900">
             <div className="w-1/12">
               <div className="aspect-w-1 aspect-h-1">

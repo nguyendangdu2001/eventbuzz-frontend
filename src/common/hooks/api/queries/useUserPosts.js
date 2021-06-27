@@ -31,6 +31,7 @@ const GET_POSTS = gql`
 `;
 
 const useUserPosts = (userId) => {
+  console.log(userId);
   return useQuery(GET_POSTS, { variables: { userId } });
 };
 

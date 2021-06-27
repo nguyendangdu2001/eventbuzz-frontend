@@ -23,6 +23,7 @@ const client = new ApolloClient({
           posts: relayStylePagination("type"),
           userPosts: relayStylePagination("type"),
           commentsById: relayStylePagination(["postId", "commentId"]),
+          myEvent: relayStylePagination(),
         },
       },
       Post: {
@@ -39,11 +40,11 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
+        <HashRouter basename={import.meta.env.BASE_URL}>
           <ApolloProvider client={client}>
             <App />
           </ApolloProvider>
-        </BrowserRouter>
+        </HashRouter>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>,

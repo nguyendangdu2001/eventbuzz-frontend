@@ -1,7 +1,5 @@
 import { loginSuccess } from "@action/userAction";
 import { gql, useMutation } from "@apollo/client";
-import User from "@components/Header/User";
-import { USER_LOGIN_SUCCESS } from "@redux/constants/userConstants";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router";
 

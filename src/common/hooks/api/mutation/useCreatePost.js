@@ -1,13 +1,14 @@
-import { loginSuccess } from "@action/userAction";
 import { gql, useMutation } from "@apollo/client";
-import User from "@components/Header/User";
-import { USER_LOGIN_SUCCESS } from "@redux/constants/userConstants";
-import { useDispatch } from "react-redux";
-import { useHistory } from "react-router";
 
 const CREATE_POST = gql`
   mutation ($post: CreatePostInput!) {
     createPost(createPostInput: $post) {
+      author {
+        avatar
+        firstName
+        lastName
+        id
+      }
       authorId
       commentCount
       content
@@ -34,6 +35,12 @@ const useCreatePost = () => {
               data: createPost,
               fragment: gql`
                 fragment NewPost on Post {
+                  author {
+                    avatar
+                    firstName
+                    lastName
+                    id
+                  }
                   authorId
                   commentCount
                   content

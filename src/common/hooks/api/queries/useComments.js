@@ -47,6 +47,7 @@ const useComments = ({ postId, commentId } = {}) => {
   return useQuery(GET_COMMENTS, {
     variables: { postId, commentId, first: 1 },
     returnPartialData: true,
+    nextFetchPolicy: "cache-only",
   });
 };
 

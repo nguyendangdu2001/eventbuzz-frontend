@@ -23,7 +23,7 @@ export const fakeData = [
     id: 1,
     name: "Dream World Wide In Jakata", //tên của sk
     date: "Saturday, Sep 14, 2019 at 20:30 PM", //ngày diễn ra sk cứ ghi đúng theo fomat là đc
-    price: 0, //giá tính bằng USD
+    price: 12, //giá tính bằng USD
     // lat lng là toạ độ trên gg map nhung vào gg map lấy toạ độ bỏ vào đây làm tròn thành số nguyên luôn
     //name là tên của địa điểm
     location: { lat: 100, lng: 100, name: "" },

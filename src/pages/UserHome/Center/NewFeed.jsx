@@ -40,7 +40,7 @@ const NewFeed = () => {
             img={`https://picsum.photos/500/500.jpg?random=${3 * i}`}
           />
           {/* <PostItem
-            img={[
+            media={[
               `https://picsum.photos/500/500.jpg?random=${3 * i + 1}`,
               `https://picsum.photos/500/500.jpg?random=${3 * i + 2}`,
             ]}

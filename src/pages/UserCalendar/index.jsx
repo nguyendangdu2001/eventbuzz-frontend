@@ -6,14 +6,20 @@ const Calendar = lazy(() => import("./Calendar"));
 
 const UserCalendar = ({ className }) => {
   return (
-    <div className={`${className} grid w-full grid-cols-12 px-6 gap-x-5`}>
-      <div className="col-span-8">
-        <Calendar />
+    <div
+      className={`${className} grid w-full grid-cols-12 px-6 gap-x-5 lg:space-y-0 space-y-2`}
+    >
+      <div className="col-span-12 lg:col-span-8">
+        <div className="relative aspect-w-16 aspect-h-9">
+          <div className="absolute w-full h-full max-h-full overflow-hidden">
+            <Calendar />
+          </div>
+        </div>
       </div>
-      <div className="col-span-4">
+      <div className="col-span-12 lg:col-span-4">
         <div className="sticky top-[88px] min-h-[calc(100vh-88px)] max-h-0">
           <div className="absolute inset-0 overflow-y-auto">
-            <div className="grid grid-cols-2 px-2 gap-x-4 gap-y-4">
+            <div className="grid grid-cols-2 lg:px-2 gap-x-4 gap-y-4">
               {[...Array(6)].map((_, i) => (
                 <div className="overflow-hidden transition-transform transform bg-white rounded-md shadow dark:bg-gray-800 group hover:scale-105">
                   <div

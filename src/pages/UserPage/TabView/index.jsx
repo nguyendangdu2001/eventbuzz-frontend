@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { lazy } from "react";
 const PictureTab = lazy(() => import("../PictureTab"));
 const PostTab = lazy(() => import("../PostTab"));
@@ -23,7 +23,7 @@ const TabView = () => {
           </button>
         ))}
       </div>
-      {tabs?.[index]?.component}
+      <Suspense fallback={null}>{tabs?.[index]?.component}</Suspense>
     </div>
   );
 };

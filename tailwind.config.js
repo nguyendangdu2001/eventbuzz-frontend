@@ -1,3 +1,5 @@
+const plugin = require("tailwindcss/plugin");
+
 // const ar = require("@tailwindcss/aspect-ratio");s
 module.exports = {
   mode: "jit",
@@ -20,5 +22,10 @@ module.exports = {
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/forms"),
     require("@tailwindcss/line-clamp"),
+    plugin(function ({ addUtilities }) {
+      addUtilities({
+        "w-fit": { width: "fit-content" },
+      });
+    }),
   ],
 };

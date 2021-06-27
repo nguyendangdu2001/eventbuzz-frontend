@@ -12,24 +12,24 @@ const GET_POSTS = gql`
       edges {
         cursor
         node {
-          comments(first: 1) {
-            pageInfo {
-              endCursor
-              hasNextPage
-              hasPreviousPage
-              startCursor
-            }
-            edges {
-              node {
-                user {
-                  avatar
-                  firstName
-                  lastName
-                }
-                text
-              }
-            }
-          }
+          # comments(first: 1) {
+          #   pageInfo {
+          #     endCursor
+          #     hasNextPage
+          #     hasPreviousPage
+          #     startCursor
+          #   }
+          #   edges {
+          #     node {
+          #       user {
+          #         avatar
+          #         firstName
+          #         lastName
+          #       }
+          #       text
+          #     }
+          #   }
+          # }
           author {
             avatar
             firstName
@@ -50,7 +50,10 @@ const GET_POSTS = gql`
 `;
 
 const usePosts = () => {
-  return useQuery(GET_POSTS);
+  return useQuery(GET_POSTS, {
+    nextFetchPolicy: "cache-only",
+    returnPartialData: true,
+  });
 };
 
 export default usePosts;

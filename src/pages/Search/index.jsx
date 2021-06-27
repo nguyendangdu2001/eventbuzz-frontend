@@ -1,6 +1,6 @@
 import EventItem from "@components/EventItem/EventItem";
 import { fakeData } from "@data/fakeData";
-import { AnimateSharedLayout, m } from "framer-motion";
+import { m } from "framer-motion";
 import React, { useEffect, useState } from "react";
 
 const Search = () => {
@@ -16,11 +16,11 @@ const Search = () => {
     return () => {};
   }, [key]);
   return (
-    <div className="container pt-8 mx-auto space-y-14">
+    <div className="container px-2 pt-8 mx-auto space-y-14">
       <form className="space-y-14">
-        <div className="flex flex-col space-x-4 md:flex-row">
+        <div className="flex space-x-4 ">
           <input
-            className="w-auto text-4xl font-bold placeholder-gray-400 bg-transparent border-b-2 border-none form-border-b dark:bg-transparent"
+            className="w-auto min-w-0 text-2xl font-bold placeholder-gray-400 bg-transparent border-b-2 border-none lg:text-3xl xl:text-4xl form-border-b dark:bg-transparent"
             type="text"
             name=""
             value={key}
@@ -34,11 +34,11 @@ const Search = () => {
             Search
           </button>
         </div>
-        <div className="flex space-x-3 dark:text-white">
+        <div className="flex flex-wrap gap-x-3 gap-y-3">
           <select
             name=""
             placeholder="Weekdays"
-            className="py-3 font-semibold bg-gray-200 border-none rounded-md dark:bg-gray-900 pr-13 pl-7"
+            className="flex-auto py-3 font-semibold bg-gray-200 border-none rounded-md lg:flex-none dark:bg-gray-800 pr-13 pl-7"
           >
             <option value="" disabled selected>
               Weekdays
@@ -48,7 +48,7 @@ const Search = () => {
           <select
             name=""
             placeholder="Event Type"
-            className="py-3 font-semibold bg-gray-200 border-none rounded-md dark:bg-gray-900 pr-13 pl-7"
+            className="flex-auto py-3 font-semibold bg-gray-200 border-none rounded-md lg:flex-none dark:bg-gray-800 pr-13 pl-7"
           >
             <option value="" disabled selected>
               Event Type
@@ -57,7 +57,7 @@ const Search = () => {
           <select
             name=""
             placeholder="Event Type"
-            className="py-3 font-semibold bg-gray-200 border-none rounded-md dark:bg-gray-900 pr-13 pl-7"
+            className="flex-auto py-3 font-semibold bg-gray-200 border-none rounded-md lg:flex-none dark:bg-gray-800 pr-13 pl-7"
           >
             <option value="" disabled selected>
               Any Category
@@ -66,13 +66,19 @@ const Search = () => {
         </div>
       </form>
       <div className="grid grid-flow-row grid-cols-1 event-list md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 lg:gap-x-16 lg:gap-y-10">
-        <AnimateSharedLayout>
-          {filterArray.map((_, i) => (
-            <m.div layout>
-              <EventItem key={i} {..._} />
-            </m.div>
-          ))}
-        </AnimateSharedLayout>
+        {filterArray.map((_, i) => (
+          <m.div
+            layout
+            key={_.id}
+            transition={{
+              type: "spring",
+              damping: 25,
+              stiffness: 100,
+            }}
+          >
+            <EventItem {..._} />
+          </m.div>
+        ))}
       </div>
       <div className="flex items-center justify-center load-more">
         <div className="px-6 py-4 text-lg font-bold text-blue-600 bg-gray-200 load-more__btn rounded-xl">

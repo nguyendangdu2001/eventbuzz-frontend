@@ -1,6 +1,7 @@
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import { resolve } from "path";
 import eslint from "@rbnlffl/rollup-plugin-eslint";
+import { VitePWA } from "vite-plugin-pwa";
 // import eslintPlugin from "vite-plugin-eslint";
 // https://vitejs.dev/config/
 const config = ({ command }) => ({
@@ -11,6 +12,7 @@ const config = ({ command }) => ({
       filterInclude: ["**/*.{js,ts,jsx,tsx}"],
       throwOnError: true,
     }),
+    // VitePWA(),
   ],
   base: command === "serve" ? "" : "/bwd2021-frontend/",
   define: {
@@ -27,7 +29,6 @@ const config = ({ command }) => ({
       "@assets": resolve(__dirname, "./src/assets"),
       "@data": resolve(__dirname, "./src/data"),
       "@redux": resolve(__dirname, "./src/redux"),
-
       "@icon": resolve(__dirname, "./src/common/components/icons"),
     },
   },

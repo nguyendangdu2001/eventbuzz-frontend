@@ -7,14 +7,15 @@ import React from "react";
 import styled from "styled-components";
 import {
   ArrowLeftIcon,
-  IdentificationIcon,
+  FlagIcon,
   LocationMarkerIcon,
 } from "@heroicons/react/outline";
-import img from "./Backstage-Class-Open-PSW.jpg";
+
 import TabView from "./TabView";
 import { useParams } from "react-router";
 import { fakeData } from "@data/fakeData";
 import { Link } from "react-router-dom";
+import DateTimeSection from "./DateTimeSection";
 
 const Detail = ({ className }) => {
   const { id } = useParams();
@@ -42,44 +43,19 @@ const Detail = ({ className }) => {
                   <LocationMarkerIcon className="w-8 h-8" />
                   View Map
                 </div>
+                <div className="flex items-center self-start p-3 space-x-1 font-semibold text-white bg-red-400 rounded-md">
+                  <FlagIcon className="w-5 h-5" />{" "}
+                  <span>Report this event</span>
+                </div>
               </div>
               <div className="flex items-center justify-center col-span-2 lg:col-span-1">
-                <div className="p-10 space-y-10 bg-white rounded-lg dark:bg-gray-700">
-                  <div className="space-y-4">
-                    <div className="text-xl font-bold dark:text-white">
-                      Date & Time
-                    </div>
-                    <div className="text-lg font-medium text-gray-500 date dark:text-gray-300">
-                      Saturday, Sep 14, 2019 at 20:30 PM
-                    </div>
-                    <div className="flex font-bold text-blue-600 add-to-calendar dark:text-blue-400 gap-x-2">
-                      <div className="items-center w-6 h-6">
-                        <AddIcon />
-                      </div>{" "}
-                      Add to Calendar
-                    </div>
-                  </div>
-                  <div className="flex flex-col space-y-4">
-                    <Link
-                      to="/payment"
-                      className="bg-blue-600 flex justify-center text-white text-base font-semibold py-5 px-6 rounded-xl min-w-[300px]"
-                    >
-                      Book now (Free)
-                    </Link>
-                    <button className="bg-gray-200 text-base font-semibold py-5 px-6 rounded-xl min-w-[300px]">
-                      Promote Program
-                    </button>
-                  </div>
-                  <div className="text-center text-gray-500 refund dark:text-gray-300">
-                    No refund
-                  </div>
-                </div>
+                <DateTimeSection />
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div className="container mx-auto">
+      <div className="container px-2 mx-auto">
         {/* <div className="flex">
           <div className="p-6 text-xl font-semibold border-b-2 border-indigo-500 dark:text-gray-50">
             About
