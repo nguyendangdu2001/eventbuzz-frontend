@@ -25,7 +25,7 @@ export const GET_USER_OWN_EVENT = gql`
 `;
 
 const useUserOwnEvent = () => {
-  return useQuery(GET_USER_OWN_EVENT);
+  return useQuery(GET_USER_OWN_EVENT, { nextFetchPolicy: "cache-only" });
 };
 
 export default useUserOwnEvent;

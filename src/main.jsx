@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import { theme } from "@config/theme";
-import store from "./redux/store/store";
+import { store, persistor } from "./redux/store/store";
 import { ThemeProvider } from "styled-components";
 import { Provider } from "react-redux";
 import { BrowserRouter, HashRouter } from "react-router-dom";
@@ -11,6 +11,7 @@ import { configAxios } from "@config/axios";
 import "./config/timeago";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import { relayStylePagination } from "@apollo/client/utilities";
+import { PersistGate } from "redux-persist/integration/react";
 // console.log(store.);
 configAxios(store);
 
@@ -24,6 +25,7 @@ const client = new ApolloClient({
           userPosts: relayStylePagination("type"),
           commentsById: relayStylePagination(["postId", "commentId"]),
           myEvent: relayStylePagination(),
+          suggestionTags: relayStylePagination(["key"]),
         },
       },
       Post: {
@@ -40,11 +42,13 @@ ReactDOM.render(
   <React.StrictMode>
     <ThemeProvider theme={theme}>
       <Provider store={store}>
-        <HashRouter basename={import.meta.env.BASE_URL}>
-          <ApolloProvider client={client}>
-            <App />
-          </ApolloProvider>
-        </HashRouter>
+        <PersistGate loading={null} persistor={persistor}>
+          <HashRouter basename={import.meta.env.BASE_URL}>
+            <ApolloProvider client={client}>
+              <App />
+            </ApolloProvider>
+          </HashRouter>
+        </PersistGate>
       </Provider>
     </ThemeProvider>
   </React.StrictMode>,

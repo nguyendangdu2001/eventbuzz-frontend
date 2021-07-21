@@ -18,13 +18,13 @@
   .form-border-b {
     @apply border-t-0 border-l-0 border-r-0;
   }
+  form input,
+  textarea,
+  .input {
+    @apply w-full px-6 py-4 font-medium transition-colors border-gray-300 rounded-xl dark:bg-gray-800 dark:text-gray-50;
+  }
 }
 
-form input,
-textarea,
-.input {
-  @apply w-full px-6 py-4 font-medium transition-colors border-gray-300 rounded-xl dark:bg-gray-800 dark:text-gray-50;
-}
 .e-schedule {
   @apply dark:!bg-gray-900 bg-gray-900;
 }

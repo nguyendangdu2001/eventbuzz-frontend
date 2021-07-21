@@ -33,11 +33,11 @@ const SearchBar = () => {
   return (
     <form
       ref={searchContainer}
-      className=" mx-auto search-form rounded-xl p-6 flex items-center backdrop-filter backdrop-blur-sm bg-opacity-80 bg-[#0b0434] dark:bg-gray-300 text-white dark:text-black shadow-xl space-x-3"
-      style={{ marginTop: "-100px" }}
+      className=" mx-auto search-form rounded-xl p-6 flex items-center backdrop-filter backdrop-blur-sm bg-opacity-80 bg-[#0b0434] dark:shadow-neon text-white shadow-xl space-x-3"
+      // style={{ marginTop: "-100px" }}
     >
-      <div className="grid flex-1 grid-cols-3 gap-x-4">
-        <div className="space-y-3">
+      <div className="grid flex-1 grid-cols-3 gap-x-4 gap-y-2">
+        <div className="col-span-3 space-y-3 lg:col-span-1">
           <h3
             className="text-lg font-medium"
             ref={(el) => (label.current[0] = el)}
@@ -51,10 +51,10 @@ const SearchBar = () => {
             ref={(el) => (inputs.current[0] = el)}
             type="text"
             name=""
-            className="bg-[#0b0434] dark:bg-gray-50 w-full text-xl font-semibold border-t-0 border-b-2 border-l-0 border-r-0 rounded-md outline-none ring-offset-2"
+            className="!bg-[#0b0434] w-full text-xl font-semibold border-t-0 border-b-2 border-l-0 border-r-0 rounded-md outline-none ring-offset-2"
           />
         </div>
-        <div className="space-y-3">
+        <div className="col-span-3 space-y-3 lg:col-span-1">
           <h3
             className="text-lg font-medium"
             ref={(el) => (label.current[1] = el)}
@@ -65,10 +65,10 @@ const SearchBar = () => {
             ref={(el) => (inputs.current[1] = el)}
             type="text"
             name=""
-            className="bg-[#0b0434] dark:bg-gray-50 w-full text-xl font-semibold border-t-0 border-b-2 border-l-0 border-r-0 rounded-md outline-none ring-offset-2"
+            className="!bg-[#0b0434] w-full text-xl font-semibold border-t-0 border-b-2 border-l-0 border-r-0 rounded-md outline-none ring-offset-2"
           />
         </div>
-        <div className="space-y-3">
+        <div className="col-span-3 space-y-3 lg:col-span-1">
           <h3
             className="text-lg font-medium"
             ref={(el) => (label.current[2] = el)}
@@ -79,7 +79,7 @@ const SearchBar = () => {
           <select
             ref={(el) => (inputs.current[2] = el)}
             name=""
-            className="transition-colors capitalize bg-[#0b0434] dark:bg-gray-50 w-full border-b-2 border-t-0 border-r-0 border-l-0 font-semibold text-xl outline-none rounded-md ring-offset-2"
+            className="transition-colors capitalize bg-[#0b0434] w-full border-b-2 border-t-0 border-r-0 border-l-0 font-semibold text-xl outline-none rounded-md ring-offset-2"
           >
             <option value="a" className="text-xl font-semibold capitalize">
               any date

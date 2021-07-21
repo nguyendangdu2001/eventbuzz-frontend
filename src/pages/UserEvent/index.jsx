@@ -5,6 +5,7 @@ import UserEventNew from "./UserEventNew";
 
 const UserEvent = () => {
   const { data } = useUserOwnEvent();
+  const eventEdges = data?.myEvent?.edges || [];
   return (
     <div className="container pt-3 mx-auto space-y-8">
       <h3 className="text-5xl font-bold dark:text-gray-50">My Events</h3>
@@ -45,7 +46,54 @@ const UserEvent = () => {
         <UserEventNew />
       </div>
       <div className="space-y-4 font-medium">
-        {[...Array(9)].map((_, i) => (
+        {eventEdges?.map(({ node }, i) => (
+          <div className="flex items-center p-2 space-x-5 bg-white rounded-lg shadow dark:bg-gray-900">
+            <div className="w-1/12">
+              <div className="aspect-w-1 aspect-h-1">
+                <img
+                  src={
+                    node?.img || `https://picsum.photos/100/100.jpg?random=${i}`
+                  }
+                  alt=""
+                  className="absolute object-cover w-full h-full rounded-md"
+                />
+              </div>
+            </div>
+            <div className="w-4/12 space-y-2">
+              <div className="text-xl font-bold dark:text-gray-50">
+                {node?.name}
+              </div>
+              <div className="text-gray-500">{node?.locationName}</div>
+            </div>
+            <div className="w-1/12 space-y-2">
+              <div className="text-gray-500">Price</div>
+              <div className="text-xl font-bold dark:text-gray-50">
+                {node?.price ? `${node?.price}$` : "Free"}
+              </div>
+            </div>
+            <div className="w-3/12 space-y-4">
+              <div className="flex items-center justify-between">
+                <div className="text-gray-600">Sold</div>
+                <div className="dark:text-gray-300">
+                  <span className="font-bold dark:text-gray-50">50</span>/
+                  <span className="dark:text-gray-300">
+                    {node?.slot || "Unlimited"}
+                  </span>
+                </div>
+              </div>
+              <div className="w-full h-1.5 bg-gray-300 rounded-full overflow-hidden">
+                <div className="w-1/2 h-full overflow-hidden bg-blue-600 rounded-full"></div>
+              </div>
+            </div>
+            <div className="w-2/12"></div>
+            <div className="flex justify-end w-1/12">
+              <div className="p-3">
+                <DotsVerticalIcon className="w-8 h-8 text-gray-500" />
+              </div>
+            </div>
+          </div>
+        ))}
+        {/* {[...Array(9)].map((_, i) => (
           <div className="flex items-center p-2 space-x-5 bg-white rounded-lg shadow dark:bg-gray-900">
             <div className="w-1/12">
               <div className="aspect-w-1 aspect-h-1">
@@ -83,7 +131,7 @@ const UserEvent = () => {
               </div>
             </div>
           </div>
-        ))}
+        ))} */}
       </div>
     </div>
   );

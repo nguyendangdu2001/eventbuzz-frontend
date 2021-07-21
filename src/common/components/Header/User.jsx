@@ -24,7 +24,7 @@ const User = () => {
       <Popover as="div" className="relative inline-block text-left">
         <Popover.Button className="flex items-center px-2 py-1 space-x-2 rounded-lg cursor-pointer hover:bg-gray-200 dark:bg-transparent dark:hover:bg-gray-600">
           <img src={user?.avatar} alt="" className="rounded-full w-11 h-11" />
-          <div className="text-lg font-bold dark:text-gray-50">
+          <div className="hidden text-lg font-bold dark:text-gray-50 md:block">
             {user?.lastName}
           </div>
         </Popover.Button>

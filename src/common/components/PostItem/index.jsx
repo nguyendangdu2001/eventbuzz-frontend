@@ -8,7 +8,7 @@ import TimeAgo from "timeago-react";
 
 import CommentSection from "@components/CommentSection";
 import MediaLayout from "./MediaLayout";
-import ReactPhotoGrid from "react-photo-grid";
+import { useRive, useStateMachineInput } from "rive-react";
 const PostItem = ({
   id,
   name = "Name of user",
@@ -25,9 +25,25 @@ const PostItem = ({
 }) => {
   const [likePost] = useLikeComment();
   const [unlikePost] = useUnlikePost();
-
+  const { RiveComponent, rive } = useRive({
+    src: "./new_file.riv",
+    stateMachines: "State Machine 1",
+    autoplay: true,
+  });
+  const onClickInput = useStateMachineInput(rive, "State Machine 1", "Like");
   // const { fetchMore } = useFetchMoreCommentPost(id);
-
+  useEffect(() => {
+    // if (!onClickInput) return;
+    // onClickInput.value = true;
+    console.log(rive, "rive");
+    return () => {};
+  }, [rive]);
+  useEffect(() => {
+    if (!onClickInput) return;
+    onClickInput.value = isUserLiked;
+    // console.log(onClickInput, "rive");
+    return () => {};
+  }, [isUserLiked, onClickInput]);
   return (
     <div className="space-y-2 bg-white rounded-lg shadow dark:bg-gray-900">
       <div className="p-3 space-y-2">
@@ -86,12 +102,10 @@ const PostItem = ({
           }
           className="flex items-center justify-center flex-1 p-2 space-x-2 text-center rounded-lg cursor-pointer dark:text-gray-50 hover:bg-gray-200 dark:hover:bg-gray-700"
         >
-          {isUserLiked ? (
-            <SolidHeartIcon className="w-6 h-6" />
-          ) : (
-            <HeartIcon className="w-6 h-6" />
-          )}{" "}
-          <span className="text-base">Like</span>
+          <div className="w-6 h-6">
+            <RiveComponent />
+          </div>
+          {/* <span className="text-base">Like</span> */}
         </button>
         <button
           // onClick={() => fetchMore({ variables: { after: endCursor } })}

@@ -9,6 +9,9 @@ import useIsDarkTheme from "@hooks/useIsDarkTheme";
 import { useDropzone } from "react-dropzone";
 import useCreateEvent from "@hooks/api/mutation/useCreateEvent";
 import useUploadImg from "@hooks/api/mutation/useUploadImg";
+import TagInput from "@components/TagInput";
+import PriceInput from "./PriceInput";
+import SlotInput from "./SlotInput";
 const UserEventModal = ({ className, isShow, close }) => {
   const dark = useIsDarkTheme();
   const { register, handleSubmit, errors, watch, reset, control } = useForm();
@@ -32,7 +35,7 @@ const UserEventModal = ({ className, isShow, close }) => {
     );
   };
   const onSubmit = async (data) => {
-    console.log(data);
+    console.log({ ...data });
     const url = img && (await uploadImg(img?.[0]));
     createEvent({ variables: { event: { ...data, img: url } } });
   };
@@ -134,13 +137,37 @@ const UserEventModal = ({ className, isShow, close }) => {
                       </div>
 
                       <textarea
-                        rows={7}
+                        rows={5}
                         type="date"
                         name="text"
                         {...register("desc")}
                         placeholder="Description"
                         className="w-full px-6 py-4 font-medium transition-colors border-gray-300 rounded-xl dark:bg-gray-800 dark:text-gray-50"
                       />
+                    </div>
+                    <div className="space-y-2">
+                      <div className="">
+                        <label
+                          htmlFor="pass"
+                          className="font-semibold uppercase dark:text-gray-50"
+                        >
+                          Tags
+                        </label>
+                      </div>
+
+                      <Controller
+                        control={control}
+                        name="tags"
+                        rules={{
+                          required:
+                            "you have to specify your event's localtion",
+                        }}
+                        defaultValue={[]}
+                        render={({ field: { onChange, value } }) => (
+                          <TagInput {...{ onChange, value }} />
+                        )}
+                      />
+                      {/* <TagInput /> */}
                     </div>
                   </div>
                   <div className="w-full space-y-6 inputs">
@@ -234,7 +261,7 @@ const UserEventModal = ({ className, isShow, close }) => {
                     </div>
 
                     <div className="flex space-x-4">
-                      <div className="flex-auto space-y-2">
+                      <div className="flex-1 space-y-2">
                         <div className="">
                           <label
                             htmlFor="pass"
@@ -244,15 +271,23 @@ const UserEventModal = ({ className, isShow, close }) => {
                           </label>
                         </div>
 
-                        <input
+                        {/* <input
                           type="number"
                           name="pass"
-                          {...register("price", { valueAsNumber: true })}
+                          min={1}
+                          {...register("price2", { valueAsNumber: true })}
                           placeholder="Price"
                           className="w-full px-6 py-4 font-medium transition-colors border-gray-300 rounded-xl dark:bg-gray-800 dark:text-gray-50"
+                        /> */}
+                        <Controller
+                          control={control}
+                          name="price"
+                          render={({ field: { onChange, value } }) => (
+                            <PriceInput onChange={onChange} />
+                          )}
                         />
                       </div>
-                      <div className="flex-auto space-y-2">
+                      <div className="flex-1 space-y-2">
                         <div className="">
                           <label
                             htmlFor="pass"
@@ -262,12 +297,19 @@ const UserEventModal = ({ className, isShow, close }) => {
                           </label>
                         </div>
 
-                        <input
+                        {/* <input
                           type="number"
                           name="slot"
                           {...register("slot", { valueAsNumber: true })}
                           placeholder="Slot"
                           className="w-full px-6 py-4 font-medium transition-colors border-gray-300 rounded-xl dark:bg-gray-800 dark:text-gray-50"
+                        /> */}
+                        <Controller
+                          control={control}
+                          name="slot"
+                          render={({ field: { onChange, value } }) => (
+                            <SlotInput onChange={onChange} />
+                          )}
                         />
                       </div>
                     </div>

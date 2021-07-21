@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import GoogleMapReact from "google-map-react";
 import EventOnMapItem from "../../../pages/EventMap/EventOnMapItem";
+import LocationMarker from "./LocationMarker";
 const GoogleMap = ({ value, onChangeMap }) => {
   const onSelect = ({ x, y, lat, lng, event }) => {
     console.log([lat, lng]);
@@ -8,7 +9,7 @@ const GoogleMap = ({ value, onChangeMap }) => {
   };
   return (
     <div className="aspect-w-16 aspect-h-9">
-      <div className=" w-full h-full overflow-hidden rounded-xl">
+      <div className="w-full h-full overflow-hidden  rounded-xl">
         <GoogleMapReact
           onClick={onSelect}
           bootstrapURLKeys={{
@@ -30,7 +31,7 @@ const GoogleMap = ({ value, onChangeMap }) => {
           }}
         >
           {value && (
-            <EventOnMapItem key={value} lat={value?.[0]} lng={value?.[1]} />
+            <LocationMarker key={value} lat={value?.[0]} lng={value?.[1]} />
           )}
         </GoogleMapReact>
       </div>

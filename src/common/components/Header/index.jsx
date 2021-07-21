@@ -1,6 +1,5 @@
 import React, { memo, useEffect, useRef } from "react";
 import { Link, NavLink } from "react-router-dom";
-import DarkModeToggle from "react-dark-mode-toggle";
 import { useDispatch, useSelector } from "react-redux";
 import {
   CalendarIcon,
@@ -13,7 +12,7 @@ import UnAuthSection from "./UnAuthSection";
 
 const Header = () => {
   const logo = useRef(null);
-  const darkMode = useSelector((state) => state.darkMode);
+
   const auth = useSelector((state) => state.userStatus?.auth);
   useEffect(() => {
     window.onload = () => {
@@ -32,7 +31,7 @@ const Header = () => {
       <div className="container relative flex items-center justify-between py-5 mx-auto">
         <Link
           to="/"
-          className="text-3xl font-extrabold logo dark:text-white w-fit"
+          className="text-2xl font-extrabold logo dark:text-white w-fit first-letter:text-blue-500 first-letter:text-4xl"
           ref={logo}
         >
           EventBuzz
@@ -45,21 +44,21 @@ const Header = () => {
               className="p-3 transition-colors duration-200 rounded-xl"
               activeClassName="text-gray-100 bg-[#022f96]"
             >
-              <HomeIcon className="w-8 h-8" />
+              <HomeIcon className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
             </NavLink>
             <NavLink
               to="/event-map"
               className="p-3 rounded-xl"
               activeClassName="text-gray-100 bg-[#022f96] transition-colors duration-200"
             >
-              <LocationMarkerIcon className="w-8 h-8" />
+              <LocationMarkerIcon className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
             </NavLink>
             <NavLink
               to="/user-calendar"
               className="p-3 rounded-xl"
               activeClassName="text-gray-100 bg-[#022f96] transition-colors duration-200"
             >
-              <CalendarIcon className="w-8 h-8" />
+              <CalendarIcon className="w-5 h-5 md:w-6 md:h-6 lg:w-8 lg:h-8" />
             </NavLink>
           </div>
         )}
