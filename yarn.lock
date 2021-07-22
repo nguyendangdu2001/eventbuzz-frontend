@@ -1715,6 +1715,11 @@
     "@types/react" "*"
     csstype "^3.0.2"
 
+"@types/tailwindcss@^2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@types/tailwindcss/-/tailwindcss-2.2.1.tgz#891349cc71b5a85208ca5796938d91dd48cc0417"
+  integrity sha512-raLwtQF+uul9lsvs7+GUizeNrpxRqbnckIu/va5hzPPwZsImZunkyLFAS/1rwEHhhvFMNiMJmTiP5PPGa0oNJA==
+
 "@types/zen-observable@^0.8.0":
   version "0.8.2"
   resolved "https://registry.yarnpkg.com/@types/zen-observable/-/zen-observable-0.8.2.tgz#808c9fa7e4517274ed555fa158f2de4b4f468e71"

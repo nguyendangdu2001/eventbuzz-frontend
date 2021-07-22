@@ -31,7 +31,7 @@ const Header = () => {
       <div className="container relative flex items-center justify-between py-5 mx-auto">
         <Link
           to="/"
-          className="text-2xl font-extrabold logo dark:text-white w-fit first-letter:text-blue-500 first-letter:text-4xl"
+          className="text-2xl font-extrabold logo dark:text-white w-fit first-letter:text-blue-500 first-letter:text-4xl first-letter:textshadow-neon-blue-500 "
           ref={logo}
         >
           EventBuzz

@@ -1,5 +1,3 @@
-const plugin = require("tailwindcss/plugin");
-
 // const ar = require("@tailwindcss/aspect-ratio");s
 module.exports = {
   mode: "jit",
@@ -23,9 +21,21 @@ module.exports = {
           "0%, 100%": { transform: "translateY(10px)" },
           "50%": { transform: "translateY(-10px)" },
         },
+        flicker: {
+          "0%, 18%, 22%, 25%, 53%, 57%, 100%": {
+            boxShadow: `0 0 .2rem #fff,
+              0 0 .2rem #fff,
+              0 0 2rem #3b82f6,
+              0 0 0.8rem #3b82f6,
+              0 0 2.8rem #3b82f6,
+              inset 0 0 1.3rem #3b82f6`,
+          },
+          "20%, 24%, 55%": { boxShadow: "none" },
+        },
       },
       animation: {
         floating: "floating 2s ease-in-out infinite",
+        flicker: "flicker 1.5s forwards",
       },
     },
     fontFamily: {
@@ -40,10 +50,6 @@ module.exports = {
     require("@tailwindcss/aspect-ratio"),
     require("@tailwindcss/forms"),
     require("@tailwindcss/line-clamp"),
-    plugin(function ({ addUtilities }) {
-      addUtilities({
-        "w-fit": { width: "fit-content" },
-      });
-    }),
+    require("./src/plugin/tailwind"),
   ],
 };

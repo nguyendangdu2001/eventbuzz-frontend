@@ -24,7 +24,10 @@
     @apply w-full px-6 py-4 font-medium transition-colors border-gray-300 rounded-xl dark:bg-gray-800 dark:text-gray-50;
   }
 }
-
+.textshadow-neon {
+  text-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3b82f6,
+    0 0 0.8rem #3b82f6, 0 0 2.8rem #3b82f6, inset 0 0 1.3rem #3b82f6;
+}
 .e-schedule {
   @apply dark:!bg-gray-900 bg-gray-900;
 }

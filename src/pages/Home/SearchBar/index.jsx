@@ -36,7 +36,7 @@ const SearchBar = () => {
       className=" mx-auto search-form rounded-xl p-6 flex items-center backdrop-filter backdrop-blur-sm bg-opacity-80 bg-[#0b0434] dark:shadow-neon text-white shadow-xl space-x-3"
       // style={{ marginTop: "-100px" }}
     >
-      <div className="grid flex-1 grid-cols-3 gap-x-4 gap-y-2">
+      <div className="grid flex-1 grid-cols-3 gap-x-4 gap-y-2 textshadow">
         <div className="col-span-3 space-y-3 lg:col-span-1">
           <h3
             className="text-lg font-medium"
