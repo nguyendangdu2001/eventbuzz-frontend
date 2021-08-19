@@ -1,17 +1,19 @@
 import { XIcon } from "@heroicons/react/outline";
 import React from "react";
 
-const FriendRequestItem = () => {
+const FriendRequestItem = ({ userName, time, id }) => {
   return (
     <div className="p-4 space-y-2 bg-white rounded-lg shadow dark:bg-gray-900 dark:text-gray-50">
       <div className="flex space-x-2">
         <img
-          src="https://dummyimage.com/50x50.png"
+          src={`http://loremflickr.com/80/80/human?random=1${id}`}
           alt=""
-          className="rounded-full"
+          className="rounded-full w-[50px] h-[50px]"
         />
         <div>
-          <span className="font-semibold">Someone</span> want to be your friend
+          <span className="font-semibold">{userName || "Someone"}</span> want to
+          be your friend
+          <div className="text-gray-400">{time}</div>
         </div>
       </div>
       <div className="flex items-center space-x-3">

@@ -70,3 +70,19 @@
 .dark .rbc-btn-group button:not(.rbc-active) {
   color: white;
 }
+.sp-header {
+  padding-left: 8px;
+  position: relative;
+}
+.sp-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  border-radius: 9999px;
+  box-shadow: 0 0 0.2rem #fff, 0 0 0.2rem #fff, 0 0 2rem #3b82f6,
+    0 0 0.8rem #3b82f6, 0 0 2.8rem #3b82f6, inset 0 0 1.3rem #3b82f6;
+  background-color: #3b82f6;
+}

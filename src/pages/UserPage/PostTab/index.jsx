@@ -2,10 +2,11 @@ import PostItem from "@components/PostItem";
 import useUserPosts from "@hooks/api/queries/useUserPosts";
 import React from "react";
 import { useSelector } from "react-redux";
+import { useParams } from "react-router";
 import EventItem from "../EventItem";
 
 const PostTab = () => {
-  const id = useSelector((state) => state.userStatus?.userInfo?.id);
+  const { id } = useParams();
   const { data } = useUserPosts(id);
 
   const postsEdges = data?.userPosts?.edges;
@@ -13,13 +14,12 @@ const PostTab = () => {
     <div className="space-y-2">
       {postsEdges?.map((egde, i) => (
         <div className="flex" key={egde?.node?.id}>
-          <div className="w-1/4"></div>
-          <div className="w-3/4 px-3">
+          <div className="w-full">
             <PostItem {...egde.node} key={egde.node?.id} />
           </div>
         </div>
       ))}
-      <div className="flex">
+      {/* <div className="flex">
         <div className="w-1/4">
           <EventItem />
         </div>
@@ -72,7 +72,7 @@ const PostTab = () => {
             </div>
           </div>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 };

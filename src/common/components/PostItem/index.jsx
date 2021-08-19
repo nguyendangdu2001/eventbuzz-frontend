@@ -9,6 +9,7 @@ import TimeAgo from "timeago-react";
 import CommentSection from "@components/CommentSection";
 import MediaLayout from "./MediaLayout";
 import { useRive, useStateMachineInput } from "rive-react";
+import { Link } from "react-router-dom";
 const PostItem = ({
   id,
   name = "Name of user",
@@ -54,7 +55,12 @@ const PostItem = ({
             className="rounded-full h-[50px] w-[50px]"
           />
           <div>
-            <div className="font-bold dark:text-gray-50">{author.lastName}</div>
+            <Link
+              to={`/user-page/${author?.id}`}
+              className="font-bold dark:text-gray-50"
+            >
+              {author.lastName}
+            </Link>
             <div className="text-gray-500 dark:text-gray-400">
               <TimeAgo locale="es" datetime={createdAt}></TimeAgo>
             </div>
@@ -105,7 +111,7 @@ const PostItem = ({
           <div className="w-6 h-6">
             <RiveComponent />
           </div>
-          {/* <span className="text-base">Like</span> */}
+          <span className="text-base">{likeCount}</span>
         </button>
         <button
           // onClick={() => fetchMore({ variables: { after: endCursor } })}

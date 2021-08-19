@@ -5,11 +5,16 @@ import userbg from "./userbg.jpg";
 
 import SideBar from "./SideBar";
 import TabView from "./TabView";
+import { useParams } from "react-router";
+import useUserById from "@hooks/api/queries/useUserById";
 
 const UserPage = () => {
+  const { id } = useParams();
+  const { data } = useUserById(id);
+  const { user } = data || {};
   return (
-    <div className="container grid grid-cols-12 mx-auto gap-x-6">
-      <div className="col-span-9 space-y-8">
+    <div className="grid max-w-6xl grid-cols-12 px-2 mx-auto gap-x-6">
+      <div className="col-span-12 space-y-8 lg:col-span-8">
         <div className="bg-white shadow dark:bg-gray-900 rounded-3xl">
           <img
             src={userbg}
@@ -20,7 +25,7 @@ const UserPage = () => {
             <div className="relative col-span-3">
               <div className="aspect-w-1 aspect-h-1">
                 <img
-                  src="https://picsum.photos/200/200.jpg"
+                  src={user?.avatar}
                   alt=""
                   className="absolute top-0 w-full h-full p-1 transform -translate-x-1/2 -translate-y-1/2 bg-white rounded-full left-1/2"
                 />
@@ -30,7 +35,7 @@ const UserPage = () => {
               <div className="flex ">
                 <div className="space-y-4">
                   <h3 className="text-4xl font-bold dark:text-gray-50">
-                    Adrian Brewer
+                    {user?.firstName} {user?.lastName}
                   </h3>
                   <div className="space-y-2 font-medium text-gray-600 dark:text-gray-400">
                     <div>Engineer at somewhere </div>
@@ -78,8 +83,8 @@ const UserPage = () => {
             Adrian's recent event
           </h4>
           <div className="flex space-x-2">
-            {[...Array(4)].map((_, i) => (
-              <div className="w-1/4">
+            {[...Array(3)].map((_, i) => (
+              <div className="w-1/2 lg:w-1/3 last:hidden lg:last:block">
                 <EventItem />
               </div>
             ))}
@@ -87,7 +92,7 @@ const UserPage = () => {
         </div>
         <TabView />
       </div>
-      <div className="col-span-3">
+      <div className="hidden col-span-4 lg:block">
         <SideBar />
       </div>
     </div>

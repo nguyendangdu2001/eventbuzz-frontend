@@ -24,7 +24,7 @@ const Routes = [
   { path: "/user-home", exact: true, component: UserHome },
   { path: "/user-calendar", exact: true, component: UserCalendar },
   { path: "/event-map", exact: true, component: EventMap },
-  { path: "/user-page", exact: true, component: UserPage },
+  { path: "/user-page/:id", exact: true, component: UserPage },
   { path: "/payment", exact: true, component: Payment },
   { path: "/user-event", exact: true, component: UserEvent },
   { path: "/admin", exact: true, component: Admin },

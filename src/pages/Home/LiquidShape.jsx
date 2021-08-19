@@ -12,12 +12,12 @@ const LiquidShape = ({ className }) => {
         <linearGradient id="sw-gradient" x1="0" x2="1" y1="1" y2="0">
           <stop
             id="stop1"
-            stop-color="rgba(169.97, 236.278, 255, 1)"
+            stopColor="rgba(169.97, 236.278, 255, 1)"
             offset="0%"
           ></stop>
           <stop
             id="stop2"
-            stop-color="rgba(90.734, 138.16, 198.258, 1)"
+            stopColor="rgba(90.734, 138.16, 198.258, 1)"
             offset="100%"
           ></stop>
         </linearGradient>
@@ -28,7 +28,7 @@ const LiquidShape = ({ className }) => {
         width="100%"
         height="100%"
         transform="translate(50 50)"
-        stroke-width="0"
+        strokeWidth="0"
         // style="transition: all 0.3s ease 0s;"
         stroke="url(#sw-gradient)"
       ></path>

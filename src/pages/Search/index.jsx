@@ -38,7 +38,7 @@ const Search = () => {
           <select
             name=""
             placeholder="Weekdays"
-            className="flex-auto py-3 font-semibold bg-gray-200 border-none rounded-md lg:flex-none dark:bg-gray-800 pr-13 pl-7"
+            className="flex-auto py-3 font-semibold bg-gray-200 border-none rounded-md lg:flex-none dark:bg-gray-800 pr-13 pl-7 dark:text-gray-50"
           >
             <option value="" disabled selected>
               Weekdays
@@ -48,7 +48,7 @@ const Search = () => {
           <select
             name=""
             placeholder="Event Type"
-            className="flex-auto py-3 font-semibold bg-gray-200 border-none rounded-md lg:flex-none dark:bg-gray-800 pr-13 pl-7"
+            className="flex-auto py-3 font-semibold bg-gray-200 border-none rounded-md lg:flex-none dark:bg-gray-800 pr-13 pl-7 dark:text-gray-50"
           >
             <option value="" disabled selected>
               Event Type
@@ -57,7 +57,7 @@ const Search = () => {
           <select
             name=""
             placeholder="Event Type"
-            className="flex-auto py-3 font-semibold bg-gray-200 border-none rounded-md lg:flex-none dark:bg-gray-800 pr-13 pl-7"
+            className="flex-auto py-3 font-semibold bg-gray-200 border-none rounded-md lg:flex-none dark:bg-gray-800 pr-13 pl-7 dark:text-gray-50"
           >
             <option value="" disabled selected>
               Any Category

@@ -16,7 +16,7 @@ const EventMap = ({ className }) => {
   //   const _onChildHover = ()
   return (
     <div className={`${className} grid w-full grid-cols-12 gap-x-5`}>
-      <div className="col-span-12 lg:col-span-8">
+      <div className="col-span-12 lg:col-span-8 sticky top-[92px] lg:relative lg:top-0">
         <div className="relative w-full h-full aspect-w-16 aspect-h-9">
           <div className="absolute w-full h-full max-h-full overflow-hidden">
             <GoogleMapReact

@@ -1,62 +1,115 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { LocationMarkerIcon, TrashIcon } from "@heroicons/react/outline";
 import { lazy } from "react";
-const Calendar = lazy(() => import("./Calendar"));
+import gsap from "gsap";
+import EventCalendarItem from "./EventCalendarItem";
+
+// const Calendar = lazy(() => import("./Calendar"));
 
 const UserCalendar = ({ className }) => {
-  return (
-    <div
-      className={`${className} grid w-full grid-cols-12 px-6 gap-x-5 lg:space-y-0 space-y-2`}
-    >
-      <div className="col-span-12 lg:col-span-8">
-        <div className="relative aspect-w-16 aspect-h-9">
-          <div className="absolute w-full h-full max-h-full overflow-hidden">
-            <Calendar />
-          </div>
-        </div>
-      </div>
-      <div className="col-span-12 lg:col-span-4">
-        <div className="sticky top-[88px] min-h-[calc(100vh-88px)] max-h-0">
-          <div className="absolute inset-0 overflow-y-auto">
-            <div className="grid grid-cols-2 lg:px-2 gap-x-4 gap-y-4">
-              {[...Array(6)].map((_, i) => (
-                <div className="overflow-hidden transition-transform transform bg-white rounded-md shadow dark:bg-gray-800 group hover:scale-105">
-                  <div
-                    className="relative h-56 bg-cover"
-                    style={{
-                      backgroundImage:
-                        "url(https://cdn.dribbble.com/users/1626229/screenshots/15031394/media/eef54ce87566d4217c4340a3049ff77c.jpg?compress=1&resize=1000x750)",
-                    }}
-                  >
-                    <div className="flex items-end w-full h-full bg-gradient-to-t from-blue-800 dark:from-gray-900">
-                      <div className="p-4">
-                        <div className="flex items-center space-x-1 font-medium text-green-300">
-                          <LocationMarkerIcon className="w-6 h-6" />
-                          <div className="text-sm">Some where</div>
-                        </div>
+  const calendarContainer = useRef(null);
+  let q = gsap.utils.selector(calendarContainer);
+  useEffect(() => {
+    const tl = gsap.timeline();
+    tl.from(q(".main-axis"), {
+      opacity: 0,
+    });
+    tl.from(q(".day-item"), {
+      y: 200,
+      stagger: {
+        each: 0.1,
+        from: 0,
+        grid: "auto",
+      },
+      duration: 0.5,
+    });
+    tl.from(
+      q(".day-circle"),
+      {
+        opacity: 0,
+        stagger: {
+          each: 0.1,
+          from: 0,
+          grid: "auto",
+        },
+      },
+      "-=0.5"
+    );
+    tl.from(
+      q(".day-name"),
+      {
+        opacity: 0,
+        stagger: {
+          each: 0.1,
+          from: 0,
+          grid: "auto",
+        },
+      },
+      "-=0.5"
+    );
+    tl.from(q(".calendar-event"), {
+      opacity: 0,
+      stagger: {
+        each: 0.1,
+        from: 0,
+        grid: "auto",
+      },
+      duration: 0.2,
+    });
 
-                        <div className="font-semibold text-gray-50">
-                          Name of the event
-                        </div>
-                        <div className="text-sm text-gray-50">
-                          Saturday, Sep 14, 2019 at 20:30 PM
-                        </div>
-                      </div>
-                    </div>
-                    <div className="absolute p-2 text-gray-100 transition-opacity duration-300 ease-in-out bg-green-600 rounded opacity-0 bg-opacity-80 top-2 left-2 group-hover:opacity-100">
-                      <LocationMarkerIcon className="w-6 h-6" />
-                    </div>
-                    <div className="absolute p-2 text-gray-100 transition-opacity duration-300 ease-in-out bg-gray-400 rounded opacity-0 bg-opacity-80 top-2 right-2 group-hover:opacity-100">
-                      <TrashIcon className="w-6 h-6" />
-                    </div>
-                  </div>
-                  {/* <img
-                    src="https://cdn.dribbble.com/users/1626229/screenshots/15031394/media/eef54ce87566d4217c4340a3049ff77c.jpg?compress=1&resize=1000x750"
-                    alt=""
-                  /> */}
+    return () => {};
+  }, []);
+  return (
+    <div className={`${className} container mx-auto px-6 space-y-6 py-2`}>
+      <div className="text-3xl font-bold dark:text-gray-50">Calendar</div>
+      <div className="relative" ref={calendarContainer}>
+        <div className="absolute top-0 bottom-0 left-0 w-0.5 -translate-x-1/2 bg-blue-500 main-axis"></div>
+        <div className="space-y-4">
+          <div className="relative space-y-4 day-item">
+            <div className="relative pl-4 text-xl font-semibold dark:text-gray-50">
+              <div className="absolute left-0 w-3 h-3 -translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-full top-1/2 shadow-neon day-circle"></div>
+              <div className="day-name">
+                <span className="">Tuesday, 17 August 2021</span>
+                <div className="text-sm font-medium text-gray-400">
+                  2 events
                 </div>
-              ))}
+              </div>
+            </div>
+            <div className="flex ml-4 space-x-2 overflow-auto">
+              <EventCalendarItem img="https://shopkingsgate.co.uk/wp-content/uploads/2019/10/GAMING-2019_DigitalArtboards_Mobile-banner.jpg" />
+              <EventCalendarItem img="https://i.pinimg.com/originals/a5/4e/e9/a54ee9e19a708ff036b65ed6b29e5113.png" />
+            </div>
+            <div className="relative space-y-4 day-item">
+              <div className="relative pl-4 text-xl font-semibold dark:text-gray-50">
+                <div className="absolute left-0 w-3 h-3 -translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-full top-1/2 shadow-neon day-circle"></div>
+                <div className="day-name">
+                  <span className="">Tuesday, 17 August 2021</span>
+                  <div className="text-sm font-medium text-gray-400">
+                    3 events
+                  </div>
+                </div>
+              </div>
+              <div className="flex ml-4 space-x-2 overflow-x-auto">
+                <EventCalendarItem img="https://img.freepik.com/free-vector/music-event-poster-template-with-colorful-shapes_1361-1591.jpg?size=626&ext=jpg" />
+                <EventCalendarItem img="https://fiverr-res.cloudinary.com/images/q_auto,f_auto/gigs/131937051/original/9718ba4691185f5300554f3f7da7c5adc4dae886/poster-design-for-events.png" />
+                <EventCalendarItem img="https://channel.mediacdn.vn/thumb_w/640/2019/11/8/photo-2-15732207505351867040976.jpg" />
+              </div>
+            </div>
+            <div className="relative space-y-4 day-item">
+              <div className="relative pl-4 text-xl font-semibold dark:text-gray-50">
+                <div className="absolute left-0 w-3 h-3 -translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-full top-1/2 shadow-neon day-circle"></div>
+                <div className="day-name">
+                  <span className="">Tuesday, 17 August 2021</span>
+                  <div className="text-sm font-medium text-gray-400">
+                    2 events
+                  </div>
+                </div>
+              </div>
+              <div className="flex ml-4 space-x-2 overflow-x-auto">
+                <EventCalendarItem img="https://pbs.twimg.com/media/Cw_pksQXEAAZkWg.jpg" />
+                <EventCalendarItem img="https://asialive365.com/wp-content/uploads/2016/11/Alan-Walker-Announce-Poster-Master.jpg" />
+              </div>
             </div>
           </div>
         </div>

@@ -8,9 +8,9 @@ const FriendSection = () => {
         Friends
       </h3>
       <div className="space-y-5">
-        <FriendItem />
-        <FriendItem />
-        <FriendItem />
+        <FriendItem name="Blake" id="1" />
+        <FriendItem name="Harvey" id="2" />
+        <FriendItem name="Glen" id="3" />
       </div>
     </div>
   );

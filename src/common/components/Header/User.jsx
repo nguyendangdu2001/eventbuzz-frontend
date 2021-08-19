@@ -1,4 +1,5 @@
 import { logout } from "@action/userAction";
+import { useApolloClient } from "@apollo/client";
 import { Popover, Transition } from "@headlessui/react";
 import { BellIcon } from "@heroicons/react/outline";
 import useUserProfile from "@hooks/api/queries/useUserProfile";
@@ -13,6 +14,7 @@ const User = () => {
   const dispatch = useDispatch();
   const darkMode = useSelector((state) => state.darkMode);
   const history = useHistory();
+  const client = useApolloClient();
   const { data } = useUserProfile();
   const { user } = data || {};
   // console.log(user);
@@ -40,7 +42,7 @@ const User = () => {
           <Popover.Panel className="absolute right-0 p-1 mt-2 origin-top-right bg-white divide-y divide-gray-100 rounded-md shadow-lg dark:bg-gray-600 dark:text-gray-50 w-96 ring-1 ring-black ring-opacity-5 focus:outline-none">
             <div className="px-1 py-1 ">
               <Link
-                to="/user-page"
+                to={`/user-page/${user?.id}`}
                 className="flex items-center p-2 space-x-2 transition-colors rounded-md hover:bg-gray-100 dark:hover:bg-gray-500"
               >
                 <img
@@ -80,7 +82,14 @@ const User = () => {
                 My Event
               </Link>
               <button
-                onClick={() => dispatch(logout(() => history.push("/")))}
+                onClick={() =>
+                  dispatch(
+                    logout(() => {
+                      history.push("/");
+                      client.resetStore();
+                    })
+                  )
+                }
                 to="/user-event"
                 className="flex items-center p-2 text-base font-bold h-14"
               >

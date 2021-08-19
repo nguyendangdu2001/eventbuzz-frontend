@@ -14,6 +14,7 @@ const EventItem = (
     tag = [],
     date = "Saturday, Sep 14, 2019 at 20:30 PM",
     host = { name: "Someone" },
+    location,
   },
   ref
 ) => {
@@ -56,7 +57,7 @@ const EventItem = (
             </div>
             <div className="flex items-center space-x-1 font-medium dark:text-gray-400">
               <img
-                src="https://i.pravatar.cc/50"
+                src={`https://i.pravatar.cc/50?u=${id}`}
                 alt=""
                 className="rounded-full w-9 h-9"
               />
@@ -66,7 +67,7 @@ const EventItem = (
         </div>
         <div className="flex py-3 space-x-1 text-gray-600 dark:text-gray-400">
           <LocationMarkerIcon className="w-5 h-5" />
-          <span>Some where</span>
+          <span>{location?.name || "Some where"}</span>
         </div>
       </div>
     </Link>

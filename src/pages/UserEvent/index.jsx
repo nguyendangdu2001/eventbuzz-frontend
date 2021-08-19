@@ -47,8 +47,8 @@ const UserEvent = () => {
       </div>
       <div className="space-y-4 font-medium">
         {eventEdges?.map(({ node }, i) => (
-          <div className="flex items-center p-2 space-x-5 bg-white rounded-lg shadow dark:bg-gray-900">
-            <div className="w-1/12">
+          <div className="grid items-center grid-cols-12 p-2 space-x-5 bg-white rounded-lg shadow dark:bg-gray-900 gap-y-2">
+            <div className="col-start-1 col-end-4 md:col-end-2">
               <div className="aspect-w-1 aspect-h-1">
                 <img
                   src={
@@ -59,19 +59,19 @@ const UserEvent = () => {
                 />
               </div>
             </div>
-            <div className="w-4/12 space-y-2">
+            <div className="col-start-4 col-end-10 space-y-2 md:col-start-2 md:col-end-7">
               <div className="text-xl font-bold dark:text-gray-50">
                 {node?.name}
               </div>
               <div className="text-gray-500">{node?.locationName}</div>
             </div>
-            <div className="w-1/12 space-y-2">
+            <div className="col-span-3 space-y-2 md:col-span-1">
               <div className="text-gray-500">Price</div>
               <div className="text-xl font-bold dark:text-gray-50">
                 {node?.price ? `${node?.price}$` : "Free"}
               </div>
             </div>
-            <div className="w-3/12 space-y-4">
+            <div className="col-span-9 space-y-4 md:col-span-3">
               <div className="flex items-center justify-between">
                 <div className="text-gray-600">Sold</div>
                 <div className="dark:text-gray-300">
@@ -85,8 +85,8 @@ const UserEvent = () => {
                 <div className="w-1/2 h-full overflow-hidden bg-blue-600 rounded-full"></div>
               </div>
             </div>
-            <div className="w-2/12"></div>
-            <div className="flex justify-end w-1/12">
+            <div className="col-span-2"></div>
+            <div className="flex justify-end col-start-10 col-end-13 row-start-1 row-end-2 md:col-start-12">
               <div className="p-3">
                 <DotsVerticalIcon className="w-8 h-8 text-gray-500" />
               </div>

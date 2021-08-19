@@ -5,10 +5,10 @@ import { useForm } from "react-hook-form";
 
 const CommentForm = ({ postId, commentId }) => {
   const { data: user } = useUserProfile();
-  const { register, handleSubmit } = useForm();
+  const { register, handleSubmit, reset } = useForm();
   const [createComment] = useCreateComment();
-  const onSubmit = (data) => {
-    createComment({
+  const onSubmit = async (data) => {
+    await createComment({
       variables: {
         comment: { ...data, postBelongId: postId, commentBelongId: commentId },
       },
@@ -31,6 +31,7 @@ const CommentForm = ({ postId, commentId }) => {
         },
       },
     });
+    reset();
   };
 
   return (

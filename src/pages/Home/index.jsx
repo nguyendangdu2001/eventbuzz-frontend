@@ -7,6 +7,7 @@ import SearchBar from "./SearchBar";
 import UpcomingEventSection from "./UpcomingEventSection";
 import partyIcon from "@assets/Succes.png";
 import LiquidShape from "./LiquidShape";
+import { Link } from "react-router-dom";
 
 const Home = ({ className }) => {
   const text = useRef(null);
@@ -63,12 +64,13 @@ const Home = ({ className }) => {
             <div className="absolute top-0 bottom-0 w-1 bg-blue-500 rounded-full -left-10 bg-blue animate-flicker"></div>
           </div>
 
-          <button
-            className="px-16 py-5 overflow-hidden text-xl font-semibold transition-all rounded-lg shadow-lg bg-gradient-to-tr from-red-700 to-blue-600 hover:scale-105 text-gray-50 hover:shadow-neon"
+          <Link
+            to="/signup"
+            className="inline-block px-16 py-5 overflow-hidden text-xl font-semibold transition-all rounded-lg shadow-lg bg-gradient-to-tr from-red-700 to-blue-600 hover:scale-105 text-gray-50 hover:shadow-neon"
             ref={button}
           >
             <div ref={textButton}>Start your journey</div>
-          </button>
+          </Link>
         </div>
         <div className="relative hidden w-1/2 lg:block">
           <LiquidShape className="absolute z-0 w-10/12 h-auto top-10 left-10"></LiquidShape>

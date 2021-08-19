@@ -40,14 +40,17 @@ const UpcomingEventSection = () => {
   return (
     <div className="py-6 space-y-20 upcoming-event">
       <div className="flex flex-col space-y-8 header lg:justify-between lg:items-center lg:flex-row lg:space-y-0">
-        <h1 className="text-3xl font-bold dark:text-white">Upcoming Event</h1>
+        <h1 className="text-3xl font-bold dark:text-white sp-header">
+          Upcoming Event
+        </h1>
         <div className="flex flex-wrap gap-x-3 gap-y-3">
           <select
             name=""
             placeholder="Weekdays"
+            defaultValue=""
             className="flex-1 py-3 font-semibold bg-gray-200 border-none rounded-md dark:bg-gray-800 pr-13 pl-7"
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Weekdays
             </option>
             <option value="1">Monday</option>
@@ -56,17 +59,19 @@ const UpcomingEventSection = () => {
             name=""
             placeholder="Event Type"
             className="flex-1 py-3 font-semibold bg-gray-200 border-none rounded-md dark:bg-gray-800 pr-13 pl-7"
+            defaultValue=""
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Event Type
             </option>
           </select>
           <select
             name=""
             placeholder="Event Type"
+            defaultValue=""
             className="flex-1 py-3 font-semibold bg-gray-200 border-none rounded-md dark:bg-gray-800 pr-13 pl-7"
           >
-            <option value="" disabled selected>
+            <option value="" disabled>
               Any Category
             </option>
           </select>

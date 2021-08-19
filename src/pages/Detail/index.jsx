@@ -33,7 +33,7 @@ const Detail = ({ className }) => {
               Back
             </div>
             <div className="grid h-full grid-cols-2 content lg:gap-x-8 gap-y-4">
-              <div className="flex flex-col justify-center col-span-2 pr-16 text-white gap-y-4 lg:gap-y-10 lg:col-span-1">
+              <div className="flex flex-col justify-center col-span-2 text-white lg:pr-16 gap-y-4 lg:gap-y-10 md:col-span-1">
                 <h1 className="text-5xl font-bold leading-snug capitalize">
                   {event?.name || "Dream world wide in Jakata"}
                 </h1>
@@ -48,7 +48,7 @@ const Detail = ({ className }) => {
                   <span>Report this event</span>
                 </div>
               </div>
-              <div className="flex items-center justify-center col-span-2 lg:col-span-1">
+              <div className="flex items-center justify-center col-span-2 md:col-span-1">
                 <DateTimeSection />
               </div>
             </div>

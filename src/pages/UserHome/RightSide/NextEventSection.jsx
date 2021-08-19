@@ -8,9 +8,18 @@ const NextEventSection = () => {
         Recent Event
       </h3>
       <div className="divide-y divide-gray-500 ">
-        {[...Array(3)].map((_, i) => (
-          <EventCalendarItem key={i} />
-        ))}
+        <EventCalendarItem
+          name="Origami Crane Wedding Planners"
+          locationName="Alabama"
+        />
+        <EventCalendarItem
+          name="Hyde Park Event Design"
+          locationName="Massachusetts"
+        />
+        <EventCalendarItem
+          name="Polka Dot Party Planners"
+          locationName="Michigan"
+        />
       </div>
     </div>
   );

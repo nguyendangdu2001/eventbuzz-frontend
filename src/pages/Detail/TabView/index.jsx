@@ -1,3 +1,4 @@
+import { AnimateSharedLayout, m } from "framer-motion";
 import React, { useState } from "react";
 import AboutTab from "../AboutTab";
 import PictureTab from "../PictureTab";
@@ -13,16 +14,22 @@ const TabView = () => {
   return (
     <div className="space-y-3">
       <div className="flex">
-        {tabs.map((tab, i) => (
-          <button
-            className={`p-6 text-xl font-semibold border-b-2 dark:text-gray-50 capitalize ${
-              index === i ? "border-indigo-500" : "border-transparent"
-            }`}
-            onClick={() => setIndex(i)}
-          >
-            {tab.name}
-          </button>
-        ))}
+        <AnimateSharedLayout>
+          {tabs.map((tab, i) => (
+            <button
+              className={`p-6 text-xl font-semibold dark:text-gray-50 capitalize relative `}
+              onClick={() => setIndex(i)}
+            >
+              {tab.name}
+              {index === i && (
+                <m.div
+                  layoutId="a"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-blue-400 shadow-neon"
+                ></m.div>
+              )}
+            </button>
+          ))}
+        </AnimateSharedLayout>
       </div>
       {tabs?.[index]?.component}
     </div>

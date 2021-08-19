@@ -4,13 +4,13 @@ import thunk from "redux-thunk";
 import Cookie from "js-cookie";
 import persistStore from "redux-persist/es/persistStore";
 
-const userInfo = Cookie.getJSON("userInfo-bwd") || null;
+const userInfo = Cookie.get("userInfo-bwd") || null;
 
 const initialState = userInfo
   ? {
       userStatus: {
         auth: true,
-        userInfo: { ...userInfo },
+        userInfo: { ...JSON.parse(userInfo) },
       },
     }
   : {};
