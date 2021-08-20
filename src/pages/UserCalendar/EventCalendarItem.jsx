@@ -17,12 +17,14 @@ const EventCalendarItem = ({ img, name, location, time }) => {
           <div className="p-4">
             <div className="flex items-center space-x-1 font-medium text-green-300">
               <LocationMarkerIcon className="w-6 h-6" />
-              <div className="text-sm">Some where</div>
+              <div className="text-sm">{location || "Some where"}</div>
             </div>
 
-            <div className="font-semibold text-gray-50">Name of the event</div>
+            <div className="font-semibold text-gray-50">
+              {name || "Name of the event"}
+            </div>
             <div className="text-sm text-gray-50">
-              Saturday, Sep 14, 2019 at 20:30 PM
+              {time || "Saturday, Sep 14, 2019 at 20:30 PM"}
             </div>
           </div>
         </div>

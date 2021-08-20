@@ -1,7 +1,7 @@
 import { LocationMarkerIcon } from "@heroicons/react/outline";
 import React from "react";
 
-const EventPlaceItem = ({ img }) => {
+const EventPlaceItem = ({ img, name, location, distance, peoples }) => {
   return (
     <div className="flex space-x-1">
       <div className="flex w-10/12 space-x-1">
@@ -17,12 +17,10 @@ const EventPlaceItem = ({ img }) => {
         </div>
 
         <div className="space-y-1">
-          <div className="text-lg font-bold dark:text-gray-50">
-            Hank’s Juiciest Beef Burger
-          </div>
+          <div className="text-lg font-bold dark:text-gray-50">{name}</div>
           <div className="flex items-center text-gray-500 dark:text-gray-400">
             <LocationMarkerIcon className="w-6 h-6" />
-            <span>20m</span>&nbsp; · &nbsp;<span>Somewhere</span>
+            <span>{distance}</span>&nbsp; · &nbsp;<span>{location}</span>
           </div>
           <div className="flex items-center space-x-1">
             <div className="flex -space-x-2">
@@ -59,7 +57,7 @@ const EventPlaceItem = ({ img }) => {
               />
             </div>
             <div className="text-sm font-medium dark:text-gray-400">
-              And 3000 people
+              {peoples}
             </div>
           </div>
         </div>

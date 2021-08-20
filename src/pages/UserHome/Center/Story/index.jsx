@@ -6,6 +6,7 @@ import React from "react";
 const Story = () => {
   const { data } = useUserProfile();
   const { user } = data || {};
+  const stories = ["Yamamoto Kun", "Desuga Mana", "Yepy Kuno", "Sanka, Suno"];
   return (
     <div className="relative grid h-56 grid-cols-5 gap-x-2">
       <div className="flex flex-col overflow-hidden bg-gray-200 rounded-lg shadow">
@@ -22,7 +23,7 @@ const Story = () => {
           <div className="text-sm font-medium text-center">New story</div>
         </div>
       </div>
-      {[...Array(4)].map((_, i) => (
+      {stories.map((e, i) => (
         <div className="relative overflow-hidden bg-gray-300 rounded-lg shadow">
           <img
             src={`https://picsum.photos/130/220.jpg?random=${i}`}
@@ -38,7 +39,7 @@ const Story = () => {
             />
           </div>
           <div className="absolute bottom-0 left-0 right-0 p-3 font-semibold text-gray-50">
-            Someone
+            {e}
           </div>
         </div>
       ))}
