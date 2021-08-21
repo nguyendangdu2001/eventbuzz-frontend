@@ -14,10 +14,10 @@ const config = ({ command }) => ({
     }),
     // VitePWA(),
   ],
-  base: command === "serve" ? "" : "/bwd2021-frontend/",
-  define: {
-    global: "window",
-  },
+  base: command === "serve" ? "" : "",
+  // define: {
+  //   global: "window",
+  // },
   resolve: {
     alias: {
       "@pages": resolve(__dirname, "./src/pages"),

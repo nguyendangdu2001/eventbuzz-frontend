@@ -35,7 +35,7 @@ const client = new ApolloClient({
       },
     },
   }),
-  connectToDevTools: true,
+  // connectToDevTools: true,
   credentials: "include",
 });
 ReactDOM.render(

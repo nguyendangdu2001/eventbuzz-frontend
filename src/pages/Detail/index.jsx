@@ -19,9 +19,14 @@ import DateTimeSection from "./DateTimeSection";
 
 const Detail = ({ className }) => {
   const { id } = useParams();
-  const event = fakeData?.find((v) => Number.parseInt(v.id) == id);
+  const event = fakeData?.find((v) => v.id.toString() === id);
+  const suggestion = fakeData
+    ?.filter((v) => v.id !== id)
+    ?.sort(() => Math.random() - 0.5)
+    ?.slice(0, 6);
+  console.log(suggestion);
   return (
-    <div className={`${className} w-full`}>
+    <div className={`${className} w-full py-2`}>
       <div
         className="heroSection lg:h-[650px] rounded-lg bg-cover mx-2 lg:mx-9 relative overflow-hidden bg-fixed"
         style={{ backgroundImage: `url(${event?.img})` }}
@@ -122,8 +127,8 @@ const Detail = ({ className }) => {
             <h1 className="header">Other event you may like</h1>
           </div>
           <div className="grid grid-flow-row grid-cols-1 event-list md:grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-4 lg:gap-x-16 lg:gap-y-10">
-            {[...Array(6)].map((_, i) => (
-              <EventItem key={i} />
+            {suggestion?.map((_, i) => (
+              <EventItem key={i} {..._} />
             ))}
           </div>
           <div className="flex items-center justify-center load-more">

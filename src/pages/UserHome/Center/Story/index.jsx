@@ -8,8 +8,8 @@ const Story = () => {
   const { user } = data || {};
   const stories = ["Yamamoto Kun", "Desuga Mana", "Yepy Kuno", "Sanka, Suno"];
   return (
-    <div className="relative grid h-56 grid-cols-5 gap-x-2">
-      <div className="flex flex-col overflow-hidden bg-gray-200 rounded-lg shadow">
+    <div className="relative flex h-56 overflow-x-auto xl:overflow-visible xl:grid xl:grid-cols-5 gap-x-2">
+      <div className="flex flex-col overflow-hidden bg-gray-200 rounded-lg shadow w-[140px] xl:w-auto flex-shrink-0">
         <div className="flex-grow overflow-hidden rounded-lg shadow">
           <img src={user?.avatar} alt="" className="object-cover h-full" />
         </div>
@@ -24,7 +24,7 @@ const Story = () => {
         </div>
       </div>
       {stories.map((e, i) => (
-        <div className="relative overflow-hidden bg-gray-300 rounded-lg shadow">
+        <div className="relative overflow-hidden bg-gray-300 rounded-lg shadow w-[140px] xl:w-auto flex-shrink-0">
           <img
             src={`https://picsum.photos/130/220.jpg?random=${i}`}
             alt=""
@@ -43,7 +43,7 @@ const Story = () => {
           </div>
         </div>
       ))}
-      <div className="absolute right-0 flex items-center justify-center transition-transform transform translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-lg shadow-lg w-14 h-14 top-1/2 text-gray-50 hover:scale-110">
+      <div className="absolute right-0 items-center justify-center hidden transition-transform transform translate-x-1/2 -translate-y-1/2 bg-blue-500 rounded-lg shadow-lg w-14 h-14 top-1/2 text-gray-50 hover:scale-110 xl:flex">
         <ArrowRightIcon className="w-6 h-6" />
       </div>
     </div>

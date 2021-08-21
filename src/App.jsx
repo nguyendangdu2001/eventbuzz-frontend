@@ -6,7 +6,7 @@ import { ScrollToTop } from "@components/ScrollToTop";
 import GetRoutes from "./config/Route/GetRoutes";
 import { LazyMotion } from "framer-motion";
 import React from "react";
-import { ReactQueryDevtools } from "react-query/devtools";
+// import { ReactQueryDevtools } from "react-query/devtools";
 import { ToastContainer } from "react-toastify";
 import { useSelector } from "react-redux";
 

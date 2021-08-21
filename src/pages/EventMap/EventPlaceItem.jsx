@@ -5,7 +5,7 @@ const EventPlaceItem = ({ img, name, location, distance, peoples }) => {
   return (
     <div className="flex space-x-1">
       <div className="flex w-10/12 space-x-1">
-        <div className="relative">
+        <div className="relative flex-shrink-0">
           <img
             src={img || "https://picsum.photos/100/100.jpg"}
             alt=""
@@ -17,7 +17,9 @@ const EventPlaceItem = ({ img, name, location, distance, peoples }) => {
         </div>
 
         <div className="space-y-1">
-          <div className="text-lg font-bold dark:text-gray-50">{name}</div>
+          <div className="text-lg font-bold dark:text-gray-50 line-clamp-1">
+            {name}
+          </div>
           <div className="flex items-center text-gray-500 dark:text-gray-400">
             <LocationMarkerIcon className="w-6 h-6" />
             <span>{distance}</span>&nbsp; · &nbsp;<span>{location}</span>

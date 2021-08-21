@@ -1,7 +1,7 @@
 import HeartIcon from "@icon/HeartIcon";
 import UploadIcon from "@icon/UploadIcon";
 import React, { memo } from "react";
-
+import locationMarker from "@assets/locationMarker.png";
 import img2 from "./714745-beautiful-dj-music-wallpaper-2880x1800-hd.jpg";
 
 const EventOnMapItem = ({
@@ -18,15 +18,13 @@ const EventOnMapItem = ({
   const markerDim = $getDimensions($dimensionKey);
   console.log(markerDim);
   return (
-    <div
-      className={`relative flex items-center justify-center w-20 h-12 text-white bg-gray-500 rounded-md cursor-pointer transition-transform transform ${
-        $hover ? "z-10 scale-110" : ""
-      }`}
-    >
-      <div className="text-lg">333$</div>
+    <div className={`relative ${$hover ? "z-10 scale-110" : ""}`}>
+      <div className="absolute transform -translate-x-1/2 -translate-y-1/2 left-1/2 top-1/2">
+        <img src={locationMarker} alt="" />
+      </div>
 
       <div
-        className={`absolute ${
+        className={`absolute -translate-x-1/2 ${
           markerDim?.y > 405 + 8 - 25 ? "bottom-full mb-2" : "top-full mt-2"
         }  h-[325px] w-[325px] transition-opacity ${
           $hover ? "opacity-100" : "opacity-0"
@@ -34,7 +32,7 @@ const EventOnMapItem = ({
       >
         <div
           // style={{ borderRadius: "0.5rem", overflow: "hidden" }}
-          className="h-full overflow-hidden font-sans text-sm leading-normal tracking-normal transition-all duration-200 ease-in-out bg-white rounded-lg shadow-md group event-item dark:bg-gray-900 dark:hover:bg-gray-800 transform-gpu hover:-translate-y-3 hover:shadow-xl"
+          className="h-full overflow-hidden font-sans text-sm leading-normal tracking-normal transition-all duration-200 ease-in-out bg-white rounded-lg shadow-md group event-item dark:bg-gray-900 dark:hover:bg-gray-800 hover:shadow-xl"
         >
           <div
             className="flex items-start justify-between p-6 bg-no-repeat bg-cover img h-36 filter dark:contrast-125"

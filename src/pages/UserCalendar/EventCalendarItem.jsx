@@ -1,9 +1,12 @@
 import { LocationMarkerIcon, TrashIcon } from "@heroicons/react/outline";
 import React from "react";
 
-const EventCalendarItem = ({ img, name, location, time }) => {
+const EventCalendarItem = ({ img, name, location, time, onClick }) => {
   return (
-    <div className="overflow-hidden transition-transform transform bg-white rounded-md shadow dark:bg-gray-800 group w-[300px] flex-shrink-0 calendar-event cursor-pointer">
+    <button
+      className="overflow-hidden transition-transform transform bg-white rounded-md shadow dark:bg-gray-800 group w-[300px] flex-shrink-0 calendar-event cursor-pointer text-left"
+      onClick={onClick}
+    >
       <div
         className="relative h-56 bg-cover"
         style={{
@@ -35,11 +38,7 @@ const EventCalendarItem = ({ img, name, location, time }) => {
           <TrashIcon className="w-6 h-6" />
         </div>
       </div>
-      {/* <img
-                    src="https://cdn.dribbble.com/users/1626229/screenshots/15031394/media/eef54ce87566d4217c4340a3049ff77c.jpg?compress=1&resize=1000x750"
-                    alt=""
-                  /> */}
-    </div>
+    </button>
   );
 };
 

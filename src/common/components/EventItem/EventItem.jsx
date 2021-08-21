@@ -42,11 +42,11 @@ const EventItem = (
       </div>
       <div className="px-6 py-6 divide-y divide-gray-300 content">
         <div className="flex py-3 space-x-4">
-          <div className="overflow-hidden text-center bg-gray-200 rounded-lg shadow day dark:bg-gray-600 dark:text-gray-50">
+          <div className="mb-auto overflow-hidden text-center bg-gray-200 rounded-lg shadow day dark:bg-gray-600 dark:text-gray-50">
             <div className="px-5 py-1 text-sm font-medium uppercase bg-red-400 month text-gray-50">
               {date?.split(",")?.[1].trim().split(" ")?.[0]}
             </div>
-            <div className="p-3 text-xl font-bold day">
+            <div className="p-3 text-xl font-bold day h-[52px]">
               {" "}
               {date?.split(",")?.[1].trim().split(" ")?.[1]}
             </div>
